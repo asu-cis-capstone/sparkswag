@@ -13,11 +13,11 @@ The purpose of this project is to connect students with researchers in their fie
 (Coming Up soon)
 
 <h2>Contributors</h2>
-1.
-2.
-3.
-4.
-5.
+<br>1. Matinee Cheevasittirungruang</br>
+<br>2.</br>
+<br>3.</br>
+<br>4.</br>
+<br>5.</br>
 
 <h2>Release Notes</h2>
 ** Release 0.1 Version **
