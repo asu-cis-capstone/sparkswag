@@ -21,5 +21,5 @@ The purpose of this project is to connect students with researchers in their fie
 
 <h2>Release Notes</h2>
 ** Release 0.1 Version **
-<p>1. GitHub repository</p>
-<p>2. Waffle.io</p>
+<br>1. GitHub repository</br>
+<br>2. Waffle.io</br>
