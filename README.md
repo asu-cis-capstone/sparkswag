@@ -7,7 +7,8 @@
 The purpose of this project is to connect students with researchers in their field, providing real career experience prior to join the work force. Design a site that will allow researchers to CRUD research projects and students to view available research projects. The website should be similar to Facebook, LinkedIn, and Match.com. 
 
 <h2>Product Backlog</h2>
-(Coming up soon)
+[![Stories in Ready](https://badge.waffle.io/asu-cis-capstone/sparkswag.svg?label=ready&title=Ready)](https://waffle.io/asu-cis-capstone/sparkswag)
+https://waffle.io/asu-cis-capstone/sparkswag
 
 <h2>How to install</h2>
 (Coming Up soon)
