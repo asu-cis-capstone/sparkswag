@@ -8,7 +8,6 @@ The purpose of this project is to connect students with researchers in their fie
 
 <h2>Product Backlog</h2>
 [![Stories in Ready](https://badge.waffle.io/asu-cis-capstone/sparkswag.svg?label=ready&title=Ready)](https://waffle.io/asu-cis-capstone/sparkswag)
-https://waffle.io/asu-cis-capstone/sparkswag
 
 <h2>How to install</h2>
 (Coming Up soon)
