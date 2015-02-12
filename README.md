@@ -40,13 +40,15 @@ Spark Open Research Repository is built with Drupal 7.34 which requires:
 * Import SQL into database.
 <br>```$ mysql -u root -p < sql/drupaldump.sql```
 
-
 ##Contributors
-1. Matinee Cheevasittirungruang
-2. Jamie Ell
-3. Bill Tan
-4. Walter Harvey
-5. Justin Giddens
+| Member                       | Affiliation             | Role             |
+|:-----------------------------|:------------------------|:-----------------|
+| Kathryn Scheckel             | Chief Executive Officer | Product Owner    |
+| Jamie Ell                    | Capstone Team Member    | Scrum Master     |
+| Matinee Cheevasittirungruang | Capstone Team Member    | Development Team |
+| Walter Harvey                | Capstone Team Member    | Development Team |
+| Justin Giddens               | Capstone Team Member    | Development Team |
+| Bill Tan                     | Capstone Team Member    | Development Team |
 
 ##Release Notes
 ** Release 0.1 Version **
