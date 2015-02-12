@@ -1,6 +1,6 @@
 # sparkswag
 
-#Spark Open Research
+#Spark Open Research Repository
 
 ##Overview
 
@@ -9,7 +9,15 @@ The purpose of this project is to connect students with researchers in their fie
 ##Product Backlog
 [![Stories in Ready](https://badge.waffle.io/asu-cis-capstone/sparkswag.svg?label=ready&title=Ready)](https://waffle.io/asu-cis-capstone/sparkswag)
 
+## System Requirements
+
+Spark Open Research Repository is built with Drupal 7.34 which requires:
++ A web server running Apache, Nginx, or Microsoft IIS (We're using Apache)
++ A database utilizing MySQL 4.1+ or PostgreSQL 7.1
++ PHP 5.2+ (We're using PHP 5.4)
+
 ##How to install
+
 * Install Apache, PHP, and MYSQL.
 <br>```$ apt-get install lamp-server php5-gd```
 
