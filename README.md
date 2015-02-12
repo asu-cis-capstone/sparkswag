@@ -38,7 +38,7 @@ Spark Open Research Repository is built with Drupal 7.34 which requires:
 <br>```mysql> grant all on drupal.* to drupaluser;```
 
 * Import SQL into database.
-<br>```$ mysql -u root -p < drupaldump.sql```
+<br>```$ mysql -u root -p < sql/drupaldump.sql```
 
 
 ##Contributors
