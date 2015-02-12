@@ -51,6 +51,11 @@ Spark Open Research Repository is built with Drupal 7.34 which requires:
 | Bill Tan                     | Capstone Team Member    | Development Team |
 
 ##Release Notes
-** Release 0.1 Version **
-1. GitHub repository</br>
-2. Waffle.io</br>
+** Release Version 0.1 **
+<br>1. GitHub repository
+<br>2. Waffle.io
+
+** Release Version 0.2 **
+<br>1. Drupal Installation
+<br>2. Technology stack chosen: Apache and phpmySQL
+<br>3. Tables and fields for the database. 
