@@ -10,7 +10,28 @@ The purpose of this project is to connect students with researchers in their fie
 [![Stories in Ready](https://badge.waffle.io/asu-cis-capstone/sparkswag.svg?label=ready&title=Ready)](https://waffle.io/asu-cis-capstone/sparkswag)
 
 <h2>How to install</h2>
-(Coming Up soon)
+Install Apache, PHP, and MYSQL.
+$ apt-get install lamp-server php5-gd
+
+Edit php.ini to turn on or off errors.
+$ nano /etc/php5/apache2/php.ini
+
+Clone the repo into your webroot.
+$ git clone https://github.com/asu-cis-capstone/sparkswag.git
+
+Give apache permission to read / write files.
+chown -R ubuntu:www-data sparkswag
+chmod -R 770 sparkswag 
+
+Create database and user then grant access.
+$ mysql -u root -p
+mysql> create database drupal;
+mysql> create user drupaluser identified by '[REDACTED]';
+mysql> grant all on drupal.* to drupaluser;
+
+Import SQL into database.
+$ mysql -u root -p < drupaldump.sql
+
 
 <h2>Contributors</h2>
 <br>1. Matinee Cheevasittirungruang</br>
