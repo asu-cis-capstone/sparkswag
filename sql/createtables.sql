@@ -26,15 +26,6 @@ Create Table Student (
 
 );
 
-Create Table registration (
-	RegistrNum	int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	StudentNum	int UNSIGNED NOT NULL,
-	ListingNum	int UNSIGNED NOT NULL,
-	RegistrDate	date NOT NULL,
-	FOREIGN KEY (StudentNum) REFERENCES Student(StudentNum),
-	FOREIGN KEY (ListingNum) REFERENCES Listing(ListingNum)
-);
-
 Create Table Listing (
 	ListingNum 	int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	StaffNum 	int UNSIGNED NOT NULL,
@@ -45,3 +36,11 @@ Create Table Listing (
 	FOREIGN KEY (StaffNum) REFERENCES Staff(StaffNum)
 );
 
+Create Table registration (
+	RegistrNum	int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	StudentNum	int UNSIGNED NOT NULL,
+	ListingNum	int UNSIGNED NOT NULL,
+	RegistrDate	date NOT NULL,
+	FOREIGN KEY (StudentNum) REFERENCES Student(StudentNum),
+	FOREIGN KEY (ListingNum) REFERENCES Listing(ListingNum)
+);
