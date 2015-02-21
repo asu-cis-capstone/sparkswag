@@ -5,12 +5,13 @@ Create Table Staff (
 	mname		varchar(32) NULL,
 	address		varchar(32) NULL,
 	city		varchar(32) NULL,
-	state 		varchar(15)	NULL,
-	zip			numeric NULL,
+	state 		varchar(15) NULL,
+	zip		numeric NULL,
 	field		varchar(32) NULL,
 	department	varchar(32) NULL,
-	institution varchar(32) NULL
-	
+	institution 	varchar(32) NULL,
+	staffPhoto	BLOB NULL,
+	staffCV		BLOB NOT NULL
 );
 
 Create Table Student (
@@ -20,10 +21,11 @@ Create Table Student (
 	mname		varchar(32) NULL,
 	address		varchar(32) NULL,
 	city		varchar(32) NULL,
-	state 		varchar(15)	NULL,
-	zip			numeric		NULL,
-	major		varchar(32) NULL
-
+	state 		varchar(15) NULL,
+	zip		numeric	NULL,
+	major		varchar(32) NULL,
+	studentPhoto 	BLOB NULL,
+	studentResm	BLOB NOT NULL
 );
 
 Create Table Listing (
