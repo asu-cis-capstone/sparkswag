@@ -35,6 +35,14 @@ Create Table Listing (
 	headline 	varchar(255) NOT NULL,
 	detailedDescription varchar(255) NOT NULL,
 	category  	varchar(100) NOT NULL,
+	startDate	date NOT NULL,
+	endDate		date NOT NULL,
+	deadline	date NOT NULL,
+	locationCity	varchar(50) NOT NULL,
+	locationState	varchar(2) NOT NULL,
+	gpaRequire	decimal(3, 2) NULL,
+	gradeRequire	varchar(10) NULL,
+	paid		varchar(3) NOT NULL,
 	FOREIGN KEY (StaffNum) REFERENCES Staff(StaffNum)
 );
 
