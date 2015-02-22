@@ -106,7 +106,7 @@ $form['name'] = array(
 	'#name' => 'name',
 	'#maxlength'=> 255,
 	'#size'=> 30,
-    	//'#value' => t('Name'),
+   	//'#value' => t('Name'),
 	'#title' => t('Name'),
 	'#title_display' => 'before'
 	
@@ -117,7 +117,9 @@ $form['description'] = array(
 	'#name' => 'description',
 	'#maxlength'=> 1000,
 	'#size'=> 30,
-	'#value' => t('description')
+	'#title' =>  t('description'),
+	'#title_display' => 'before'
+	
   );
 
 $form['positions'] = array(
@@ -132,7 +134,7 @@ $form['positions'] = array(
 
 $form['startdate'] = array(
 	'#type' => 'date',
-	'#title' => 'startdate',
+	'#title' => 'start date',
 	'#title_display' => 'before',
 	'#required'=> TRUE,
     
@@ -141,20 +143,16 @@ $form['startdate'] = array(
 $form['enddate'] = array(
 	'#type' => 'date',
 	'#name' => 'enddate',
-	'#maxlength'=> 20,
-	'#size'=> 10,
-	//'#value' => t('End Date')
 	'#title' => t('End Date'),
 	'#title_display' => 'before'
 
   );
   
 $form['deadline'] = array(
-	'#type' => 'textfield',
+	'#type' => 'date',
 	'#name' => 'deadline',
-	'#maxlength'=> 20,
-	'#size'=> 10,
-	'#value' => t('Application Deadline')
+	'#title' => t('Application Deadline'),
+	'#title_display' => 'before'
   );
   
     
@@ -163,7 +161,8 @@ $form['location'] = array(
 	'#name' => 'location',
 	'#maxlength'=> 100,
 	'#size'=> 10,
-	'#value' => t('Location')
+	'#title' => t('Location'),
+	'#title_display' => 'before'
   );
   
   
@@ -172,7 +171,8 @@ $form['institution'] = array(
 	'#name' => 'institution',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-	'#value' => t('Institution')
+	'#title' =>t('Institution'),
+	'#title_display' => 'before'
   );
   
 $form['institutiontype'] = array(
@@ -180,7 +180,8 @@ $form['institutiontype'] = array(
 	'#name' => 'institutiontype',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-	'#value' => t('Institution Type')
+	'#title' =>t('Institution Type'),
+	'#title_display' => 'before'
   );
   
 $form['discipline'] = array(
@@ -188,7 +189,8 @@ $form['discipline'] = array(
 	'#name' => 'discipline',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-	'#value' => t('Discipline')
+	'#title' => t('Discipline'),
+	'#title_display' => 'before'
   );
  
 $form['logo'] = array(
@@ -196,7 +198,8 @@ $form['logo'] = array(
 	'#name' => 'logo',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-	'#value' => t('Logo')
+	'#title'=> t('Logo'),
+	'#title_display' => 'before'
   );
   
 $form['homepage'] = array(
@@ -204,7 +207,8 @@ $form['homepage'] = array(
 	'#name' => 'homepage',
 	'#maxlength'=> 100,
 	'#size'=> 10,
-	'#value' => t('Opportunity Homepage')
+	'#title'=> t('Opportunity Homepage'),
+	'#title_display' => 'before'
   );
   
   
@@ -213,7 +217,8 @@ $form['gpareq'] = array(
 	'#name' => 'gpareq',
 	'#maxlength'=> 5,
 	'#size'=> 10,
-	'#value' => t('GPA Requirement')
+	'#title'=> t('GPA Requirement'),
+	'#title_display' => 'before'
   );
   
   
@@ -222,13 +227,15 @@ $form['gradereg'] = array(
 	'#name' => 'gradereg',
 	'#maxlength'=> 20,
 	'#size'=> 10,
-	'#value' => t('Grade Level Requirement')
+	'#title'=> t('Grade Level Requirement'),
+	'#title_display' => 'before'
   );
   
 $form['paid'] = array(
 	'#type' => 'checkbox',
 	'#name' => 'paid'
-    
+    '#title'=> t('Paid'),
+	'#title_display' => 'before'
   );
   
 $form['contactinfo'] = array(
@@ -236,7 +243,8 @@ $form['contactinfo'] = array(
 	'#name' => 'contactinfo',
 	'#maxlength'=> 100,
 	'#size'=> 30,
-	'#value' => t('Contact Information')
+	'#title'=> t('Contact Information'),
+	'#title_display' => 'before'
   );
 
 
