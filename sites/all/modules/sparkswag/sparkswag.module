@@ -222,13 +222,18 @@ $form['gpareq'] = array(
   );
   
   
-$form['gradereg'] = array(
-	'#type' => 'textfield',
-	'#name' => 'gradereg',
-	'#maxlength'=> 20,
-	'#size'=> 10,
-	'#title'=> t('Grade Level Requirement'),
-	'#title_display' => 'before'
+$form['gradereq'] = array(
+       '#type' => 'select',
+       '#title' => t('Grade Level Requirement'),
+       '#options' => array(
+         0 => t('Undefined'),
+         1 => t('Freshman'),
+         2 => t('Sophomore'),
+	 3 => t('Junior'),
+	 4 => t('Senior'),
+       ),
+       '#default_value' => t('Undefined'),
+       '#description' => t('The grade level required to participate'),
   );
   
 $form['paid'] = array(
