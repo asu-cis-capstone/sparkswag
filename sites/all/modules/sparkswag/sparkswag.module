@@ -233,8 +233,8 @@ $form['gradereg'] = array(
   
 $form['paid'] = array(
 	'#type' => 'checkbox',
-	'#name' => 'paid'
-    '#title'=> t('Paid'),
+	'#name' => 'paid',
+	'#title'=> t('Paid'),
 	'#title_display' => 'before'
   );
   
