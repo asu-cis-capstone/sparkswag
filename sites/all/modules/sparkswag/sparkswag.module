@@ -25,44 +25,44 @@ function sparkswag_help($path, $arg) {
 } 
 
 function sparkswag_menu() {
-  $items = array();
+	$items = array();
   
-//"Registers URL  opportunity/form1, can view in browser"
-$items['opportunity/form1'] = array( 
-    'title' => 'Research Opportunity Form', //page title
-    'description' => 'A form to fill out info',
-    'page callback' => 'drupal_get_form', //drupal_get_form function is executed when webpage is accessed.
-    'page arguments' => array('sparkswag_myform1_form'), //drupal_get_form function gets this form as array
-    'access callback' => TRUE
-  );
+	//"Registers URL  opportunity/form1, can view in browser"
+	$items['opportunity/form1'] = array( 
+	    'title' => 'Research Opportunity Form', //page title
+	    'description' => 'A form to fill out info',
+	    'page callback' => 'drupal_get_form', //drupal_get_form function is executed when webpage is accessed.
+	    'page arguments' => array('sparkswag_myform1_form'), //drupal_get_form function gets this form as array
+	    'access callback' => TRUE
+	);
 	$items['opportunity/mynode'] = array( 
-	'title' => 'Opportunity Node Access',
-    'page callback' => 'sparkswag_private_node_listing',
-    'access callback' => TRUE,
-  );
-   $items['admin/settings/sparkswag'] = array(
-    'title' => 'Sparkswag',
-    'description' => 'This is module settings page',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('sparkswag_admin'),
-    'access arguments' => array('administer sparkswag content'),
-    'type' => MENU_NORMAL_ITEM,
-   );
+		'title' => 'Opportunity Node Access',
+	    'page callback' => 'sparkswag_private_node_listing',
+	    'access callback' => TRUE,
+	);
+	$items['admin/settings/sparkswag'] = array(
+	    'title' => 'Sparkswag',
+	    'description' => 'This is module settings page',
+	    'page callback' => 'drupal_get_form',
+	    'page arguments' => array('sparkswag_admin'),
+	    'access arguments' => array('administer sparkswag content'),
+	    'type' => MENU_NORMAL_ITEM,
+	);
   
-  return 
-
-$items;
+  return $items;
 }
 
 /**
  * Implements hook_permission().
  */
 function sparkswag_permission() {
-  return array(
-    'access sparkswag content' => array(
+$permission['access sparkswag content'] = array(
       'title' => t('Access content for the Spark Swag module'),
-    )
-  );
+    );
+$permission['administer sparkswag content'] = array(
+      'title' => t('Administer content for the Spark Swag module'),
+);
+
 }
 
 
@@ -88,11 +88,11 @@ $blocks['myblock2'] = array(
 function sparkswag_block_view($delta = '') {
   $block = array();
 
-  switch ($delta) {
-    case 'myblock1':
+	switch ($delta) {
+	case 'myblock1':
 		$blocks['subject'] = t('This is a subject for block.');
-        $form = drupal_get_form('sparkswag_myform1_form');	//call form
-        $block['content'] = drupal_render($form);	//get html from $form put in block content.
+		$form = drupal_get_form('sparkswag_myform1_form');	//call form
+	        $block['content'] = drupal_render($form);	//get html from $form put in block content.
 	break;
   return $block;
   }
@@ -102,12 +102,13 @@ function sparkswag_block_view($delta = '') {
 function sparkswag_myform1_form($form, &$form_state){
 
 $form['name'] = array(
-    '#type' => 'textfield',
+	'#type' => 'textfield',
 	'#name' => 'name',
 	'#maxlength'=> 255,
 	'#size'=> 30,
-    '#value' => t('Name'),
-	'#title' => t('Name')
+    	//'#value' => t('Name'),
+	'#title' => t('Name'),
+	'#title_display' => 'before'
 	
   );
 
@@ -116,121 +117,126 @@ $form['description'] = array(
 	'#name' => 'description',
 	'#maxlength'=> 1000,
 	'#size'=> 30,
-    '#value' => t('description')
+	'#value' => t('description')
   );
 
-	$form['positions'] = array(
-    '#type' => 'textfield',
+$form['positions'] = array(
+	'#type' => 'textfield',
 	'#name' => 'positions',
 	'#maxlength'=> 5,
 	'#size'=> 10,
-    '#value' => t('Positions available')
+	'#title' => t('Positions available'),
+	'#title_display' => 'before'
   );
   
 
-  $form['startdate'] = array(
-    '#type' => 'date',
+$form['startdate'] = array(
+	'#type' => 'date',
 	'#title' => 'startdate',
+	'#title_display' => 'before',
 	'#required'=> TRUE,
     
   );
   
-    $form['enddate'] = array(
-    '#type' => 'textfield',
+$form['enddate'] = array(
+	'#type' => 'date',
 	'#name' => 'enddate',
 	'#maxlength'=> 20,
 	'#size'=> 10,
-    '#value' => t('End Date')
+	//'#value' => t('End Date')
+	'#title' => t('End Date'),
+	'#title_display' => 'before'
+
   );
   
-     $form['deadline'] = array(
-    '#type' => 'textfield',
+$form['deadline'] = array(
+	'#type' => 'textfield',
 	'#name' => 'deadline',
 	'#maxlength'=> 20,
 	'#size'=> 10,
-    '#value' => t('Application Deadline')
+	'#value' => t('Application Deadline')
   );
   
     
-    $form['location'] = array(
-    '#type' => 'textfield',
+$form['location'] = array(
+	'#type' => 'textfield',
 	'#name' => 'location',
 	'#maxlength'=> 100,
 	'#size'=> 10,
-    '#value' => t('Location')
+	'#value' => t('Location')
   );
   
   
-    $form['institution'] = array(
-    '#type' => 'textfield',
+$form['institution'] = array(
+	'#type' => 'textfield',
 	'#name' => 'institution',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-    '#value' => t('Institution')
+	'#value' => t('Institution')
   );
   
-    $form['institutiontype'] = array(
-    '#type' => 'textfield',
+$form['institutiontype'] = array(
+	'#type' => 'textfield',
 	'#name' => 'institutiontype',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-    '#value' => t('Institution Type')
+	'#value' => t('Institution Type')
   );
   
-    $form['discipline'] = array(
-    '#type' => 'textfield',
+$form['discipline'] = array(
+	'#type' => 'textfield',
 	'#name' => 'discipline',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-    '#value' => t('Discipline')
+	'#value' => t('Discipline')
   );
  
-    $form['logo'] = array(
-    '#type' => 'textfield',
+$form['logo'] = array(
+	'#type' => 'textfield',
 	'#name' => 'logo',
 	'#maxlength'=> 30,
 	'#size'=> 10,
-    '#value' => t('Logo')
+	'#value' => t('Logo')
   );
   
-    $form['homepage'] = array(
-    '#type' => 'textfield',
+$form['homepage'] = array(
+	'#type' => 'textfield',
 	'#name' => 'homepage',
 	'#maxlength'=> 100,
 	'#size'=> 10,
-    '#value' => t('Opportunity Homepage')
+	'#value' => t('Opportunity Homepage')
   );
   
   
-    $form['gpareq'] = array(
-    '#type' => 'textfield',
+$form['gpareq'] = array(
+	'#type' => 'textfield',
 	'#name' => 'gpareq',
 	'#maxlength'=> 5,
 	'#size'=> 10,
-    '#value' => t('GPA Requirement')
+	'#value' => t('GPA Requirement')
   );
   
   
-    $form['gradereg'] = array(
-    '#type' => 'textfield',
+$form['gradereg'] = array(
+	'#type' => 'textfield',
 	'#name' => 'gradereg',
 	'#maxlength'=> 20,
 	'#size'=> 10,
-    '#value' => t('Grade Level Requirement')
+	'#value' => t('Grade Level Requirement')
   );
   
-    $form['paid'] = array(
-    '#type' => 'checkbox',
+$form['paid'] = array(
+	'#type' => 'checkbox',
 	'#name' => 'paid'
     
   );
   
-  $form['contactinfo'] = array(
-    '#type' => 'textarea',
+$form['contactinfo'] = array(
+	'#type' => 'textarea',
 	'#name' => 'contactinfo',
 	'#maxlength'=> 100,
 	'#size'=> 30,
-    '#value' => t('Contact Information')
+	'#value' => t('Contact Information')
   );
 
 
@@ -246,10 +252,13 @@ $form['submit_button'] = array(
 function sparkswag_myform1_form_submit($form, &$form_state) {
 	drupal_set_message(t('The form is saving to DB!'));
 	$insert = db_insert('opportunity');
+	$form_name = $form_state['values']['name'];
 	
+	//insert object goes in insert object comes out
+	//you can't explain that.
 	$insert-> fields(array(
-		'pid' => 1,
-		'name' => 'dfgsdfgsdfg',
+		'pid' => 2,
+		'name' => $form_name,
 		'uid' => 0,)
 	)
 	->execute();
