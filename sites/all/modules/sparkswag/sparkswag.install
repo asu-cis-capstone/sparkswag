@@ -17,6 +17,24 @@ function sparkswag_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'description' => array(
+	       'type' => 'varchar',
+	       'length' => 1000,
+	       'not null' => TRUE,
+	       'default' => '',
+	       'description' => "The description of the opportunity",
+	     ),
+	     'positionsAvailable' => array(
+	       'type' => 'int',
+	       'default' => '',
+	       'description' => "The number of positions available",
+	     ),
+	     'startDate' => array(
+	       'type' => 'date',
+	       'not null' => TRUE,
+	       'default' => '',
+	       'description' => "The date the project will begin",
+	     ),
       'uid' => array(
         'type' => 'int',
         'unsigned' => TRUE,
