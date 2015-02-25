@@ -36,7 +36,7 @@ function sparkswag_menu() {
 	    'access callback' => TRUE
 	);
 	$items['opportunity/mynode'] = array( 
-		'title' => 'Opportunity Node Access',
+		'title' => 'Find Opportunities',
 	    'page callback' => 'sparkswag_private_node_listing',
 	    'access callback' => TRUE,
 	);
@@ -117,7 +117,7 @@ $form['description'] = array(
 	'#name' => 'description',
 	'#maxlength'=> 1000,
 	'#size'=> 30,
-	'#title' =>  t('description'),
+	'#title' =>  t('Description'),
 	'#title_display' => 'before'
 	
   );
@@ -134,7 +134,7 @@ $form['positions'] = array(
 
 $form['startdate'] = array(
 	'#type' => 'date',
-	'#title' => 'start date',
+	'#title' => t('Start Date'),
 	'#title_display' => 'before',
 	'#required'=> TRUE,
     
@@ -155,13 +155,21 @@ $form['deadline'] = array(
 	'#title_display' => 'before'
   );
   
-    
-$form['location'] = array(
+$form['locationCity'] = array(
 	'#type' => 'textfield',
-	'#name' => 'location',
+	'#name' => 'locationCity',
 	'#maxlength'=> 100,
 	'#size'=> 10,
-	'#title' => t('Location'),
+	'#title' => t('City'),
+	'#title_display' => 'before'
+  );
+  
+$form['locationState'] = array(
+	'#type' => 'textfield',
+	'#name' => 'locationState',
+	'#maxlength'=> 100,
+	'#size'=> 10,
+	'#title' => t('State'),
 	'#title_display' => 'before'
   );
   
@@ -221,21 +229,20 @@ $form['gpareq'] = array(
 	'#title_display' => 'before'
   );
   
-  
 $form['gradereq'] = array(
        '#type' => 'select',
        '#title' => t('Grade Level Requirement'),
        '#options' => array(
-         0 => t('Undefined'),
+		 0 => t('Undefined'),
          1 => t('Freshman'),
          2 => t('Sophomore'),
-	 3 => t('Junior'),
-	 4 => t('Senior'),
+		 3 => t('Junior'),
+		 4 => t('Senior'),
        ),
        '#default_value' => t('Undefined'),
        '#description' => t('The grade level required to participate'),
-  );
-  
+   );
+   
 $form['paid'] = array(
 	'#type' => 'checkbox',
 	'#name' => 'paid',
@@ -270,7 +277,6 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 	//insert object goes in insert object comes out
 	//you can't explain that.
 	$insert-> fields(array(
-		'pid' => 2,
 		'name' => $form_name,
 		'uid' => 0,)
 	)
@@ -279,7 +285,77 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 
 
 function  sparkswag_private_node_listing(){
-	$html = '<div>'.t('My new node ').'</div>';
+	$html = '<div>'.t('This will provide information about current opportunities! ').'</div>'.'<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">Results</th>
+    <th class="tg-031e">Researcher</th>
+    <th class="tg-031e">Project Title</th>
+    <th class="tg-031e">Project Description</th>
+    <th class="tg-031e">Start Date</th>
+    <th class="tg-031e">End Date</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">1</td>
+    <td class="tg-031e">Justin</td>
+    <td class="tg-031e">Best Capstone</td>
+    <td class="tg-031e">Looking for new teammates for my capstone. thx</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2</td>
+    <td class="tg-031e">Nate</td>
+    <td class="tg-031e">Study for books</td>
+    <td class="tg-031e">research on different book genres</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">3</td>
+    <td class="tg-031e">Snoop</td>
+    <td class="tg-031e">Best weed?</td>
+    <td class="tg-031e">Survey for best canabis</td>
+    <td class="tg-031e">now</td>
+    <td class="tg-031e">never</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">4</td>
+    <td class="tg-031e">Usher</td>
+    <td class="tg-031e">Study for things</td>
+    <td class="tg-031e">this or that</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">5</td>
+    <td class="tg-031e">Kanye</td>
+    <td class="tg-031e">EGO</td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">6</td>
+    <td class="tg-031e">Kim</td>
+    <td class="tg-031e">Americas next "famous" person</td>
+    <td class="tg-031e">Need females to study and hang out with</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">7</td>
+    <td class="tg-031e">Barack</td>
+    <td class="tg-031e">Who should be next president</td>
+    <td class="tg-031e">This project will research new candidates</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
+  </tr>
+</table>';
 	
 	return array('#markup' => $html);
 }
