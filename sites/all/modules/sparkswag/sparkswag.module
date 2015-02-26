@@ -33,7 +33,7 @@ function sparkswag_menu() {
 	    'description' => 'A form to fill out info',
 	    'page callback' => 'drupal_get_form', //drupal_get_form function is executed when webpage is accessed.
 	    'page arguments' => array('sparkswag_myform1_form'), //drupal_get_form function gets this form as array
-	    'access callback' => TRUE
+		'access arguments' => array('sparkswag_form_access'),
 	);
 	$items['opportunity/mynode'] = array( 
 		'title' => 'Find Opportunities',
@@ -48,7 +48,11 @@ function sparkswag_menu() {
 	    'access arguments' => array('administer sparkswag content'),
 	    'type' => MENU_NORMAL_ITEM,
 	);
-  
+	$items['opportunity/details'] = array( 
+		'title' => 'This Opportunity',
+	    'page callback' => 'sparkswag_private_node_this',
+	    'access callback' => TRUE,
+	);
   return $items;
 }
 
@@ -56,6 +60,11 @@ function sparkswag_menu() {
  * Implements hook_permission().
  */
 function sparkswag_permission() {
+	return array(
+		'sparkswag_form_access' => array(
+		'title' => t('Access content for the sparkswag module'),
+		)
+	);
 $permission['access sparkswag content'] = array(
       'title' => t('Access content for the Spark Swag module'),
     );
@@ -200,14 +209,12 @@ $form['discipline'] = array(
 	'#title' => t('Discipline'),
 	'#title_display' => 'before'
   );
- 
+
 $form['logo'] = array(
-	'#type' => 'textfield',
-	'#name' => 'logo',
-	'#maxlength'=> 30,
-	'#size'=> 10,
-	'#title'=> t('Logo'),
-	'#title_display' => 'before'
+	/**'#name' => 'files[' . implode('_', $form['#parents']) . ']',*/
+    '#type' => 'file',
+    '#title' => t('Logo'),
+    '#description' => t('Upload a file, allowed extensions: jpg, jpeg, png, gif'),
   );
   
 $form['homepage'] = array(
@@ -312,6 +319,9 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 	$form_gpareq = $form_state['values']['gpareq'];
 	$form_gradereq = $form_state['values']['gradereq'];
 	$form_paid = $form_state['values']['paid'];
+
+global $user;
+
 	
 	//insert object goes in insert object comes out
 	//you can't explain that.
@@ -332,14 +342,23 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 		'gpaReq' => $form_gpareq,
 		'gradeReq' => $form_gradereq,
 		'paid' => $form_paid,
-		'uid' => 1,
+		'uid' => $user->uid,
 		)
 	)
 	->execute();
 }
 
 
+function sparkswag_private_node_this(){
+	$html = '<h1>BEST CAPSTONE</h1><br /><p>Author: Justin Giddens<br />Details: Looking for new teammates for my capstone. thx<br /><br /><a href="http://database.sparkopenresearch.com/?q=opportunity/mynode">Back</a></p>';
+	return array('#markup' => $html);
+}
+
+
+
+
 function  sparkswag_private_node_listing(){
+
 	$html = '<div>'.t('This will provide information about current opportunities! ').'</div>'.'<style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:20px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
@@ -357,7 +376,7 @@ function  sparkswag_private_node_listing(){
   <tr>
     <td class="tg-031e">1</td>
     <td class="tg-031e">Justin</td>
-    <td class="tg-031e">Best Capstone</td>
+    <td class="tg-031e"><a href="http://database.sparkopenresearch.com/?q=opportunity/details">Best Capstone</a></td>
     <td class="tg-031e">Looking for new teammates for my capstone. thx</td>
     <td class="tg-031e">2/24/15</td>
     <td class="tg-031e">2/30/16</td>
