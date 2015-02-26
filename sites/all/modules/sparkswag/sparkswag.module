@@ -1,5 +1,5 @@
 <?php
-require_once '/home/spark2015admin/public_html/researchdb/kint/Kint.class.php';
+
 /**
  * Implements hook_help().
  *
@@ -250,14 +250,14 @@ $form['paid'] = array(
 	'#title_display' => 'before'
   );
   
-$form['contactinfo'] = array(
+/**$form['contactinfo'] = array(
 	'#type' => 'textarea',
 	'#name' => 'contactinfo',
 	'#maxlength'=> 100,
 	'#size'=> 30,
 	'#title'=> t('Contact Information'),
 	'#title_display' => 'before'
-  );
+  );*/
 
 
 $form['submit_button'] = array(
@@ -273,12 +273,67 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 	drupal_set_message(t('The form is saving to DB!'));
 	$insert = db_insert('opportunity');
 	$form_name = $form_state['values']['name'];
+	$form_description = $form_state['values']['description'];
+	$form_positions = $form_state['values']['positions'];
+	$date_arr = $form_state['values']['startdate'];
+	if ($date_arr['year'] && $date_arr['month'] && $date_arr['day']) {
+		$startdate = new DateTime();
+		$startdate->setDate($date_arr['year'], $date_arr['month'], $date_arr['day']);
+		$form_startdate = $startdate->format('Y-m-d-H-i-s');
+	} 
+	else {
+		$startdate = NULL;
+	}
+	$date_arr2 = $form_state['values']['enddate'];
+	if ($date_arr2['year'] && $date_arr2['month'] && $date_arr2['day']) {
+		$enddate = new DateTime();
+		$enddate->setDate($date_arr2['year'], $date_arr2['month'], $date_arr2['day']);
+		$form_enddate = $enddate->format('Y-m-d-H-i-s');
+	} 
+	else {
+		$form_enddate = NULL;
+	}
+	$date_arr3 = $form_state['values']['deadline'];
+	if ($date_arr3['year'] && $date_arr3['month'] && $date_arr3['day']) {
+		$deadline = new DateTime();
+		$deadline->setDate($date_arr3['year'], $date_arr3['month'], $date_arr3['day']);
+		$form_deadline = $deadline->format('Y-m-d-H-i-s');
+	} 
+	else {
+		$form_deadline = NULL;
+	}	
+	$form_locationCity = $form_state['values']['locationCity'];
+	$form_locationState = $form_state['values']['locationState'];
+	$form_institution = $form_state['values']['institution'];
+	$form_institutiontype = $form_state['values']['institutiontype'];
+	$form_discipline = $form_state['values']['discipline'];
+	$form_logo = $form_state['values']['logo'];
+	$form_homepage = $form_state['values']['homepage'];
+	$form_gpareq = $form_state['values']['gpareq'];
+	$form_gradereq = $form_state['values']['gradereq'];
+	$form_paid = $form_state['values']['paid'];
 	
 	//insert object goes in insert object comes out
 	//you can't explain that.
 	$insert-> fields(array(
 		'name' => $form_name,
-		'uid' => 0,)
+		'opportunityDescription' => $form_description,
+		'positionsAvailable' => $form_positions,
+		'startDate' => $form_startdate,
+		'endDate' => $form_enddate,
+		'appDeadline' => $form_deadline,
+		'locationCity' => $form_locationCity,
+		'locationState' => $form_locationState,
+		'institution' => $form_institution,
+		'institutionType' => $form_institutiontype,
+		'discipline' => $form_discipline,
+		'logo' => $form_logo,
+		'opportunityPage' => $form_homepage,
+		'gpaReq' => $form_gpareq,
+		'gradeReq' => $form_gradereq,
+		'paid' => $form_paid,
+		'uid' => 1,
+		)
 	)
 	->execute();
 }
@@ -287,8 +342,8 @@ function sparkswag_myform1_form_submit($form, &$form_state) {
 function  sparkswag_private_node_listing(){
 	$html = '<div>'.t('This will provide information about current opportunities! ').'</div>'.'<style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:20px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
 </style>
 <table class="tg">
   <tr>
@@ -318,10 +373,10 @@ function  sparkswag_private_node_listing(){
   <tr>
     <td class="tg-031e">3</td>
     <td class="tg-031e">Snoop</td>
-    <td class="tg-031e">Best weed?</td>
-    <td class="tg-031e">Survey for best canabis</td>
-    <td class="tg-031e">now</td>
-    <td class="tg-031e">never</td>
+    <td class="tg-031e">Best things?</td>
+    <td class="tg-031e">Survey for best things</td>
+    <td class="tg-031e">2/24/15</td>
+    <td class="tg-031e">2/30/16</td>
   </tr>
   <tr>
     <td class="tg-031e">4</td>
