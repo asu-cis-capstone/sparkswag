@@ -52,19 +52,19 @@ Spark Open Research Repository is built with Drupal 7.34 which requires:
 
 ##Release Notes
 ** Release Version 0.1 **
-*1. GitHub repository
-*2. Waffle.io
+* 1. GitHub repository
+* 2. Waffle.io
 
 ** Release Version 0.2 **
-*1. Drupal Installation
-*2. Technology stack chosen: Apache and phpmySQL
-*3. Tables and fields for the database. 
+* 1. Drupal Installation
+* 2. Technology stack chosen: Apache and phpmySQL
+* 3. Tables and fields for the database. 
 
 ** Release Version 0.3 **
-*1. Module of SparkSwag creation on Drupal
-*2. Research Opportunity Form created only for the researcher to post the opportunities.   
-*3. Frontpage
-*4. User access area and guest access area
-*5. Opportunity page with table
-*6. Mobile compatibility
-*7. Connect website to the database and store data to the database.
+* 1. Module of SparkSwag creation on Drupal
+* 2. Research Opportunity Form created only for the researcher to post the opportunities.   
+* 3. Frontpage
+* 4. User access area and guest access area
+* 5. Opportunity page with table
+* 6. Mobile compatibility
+* 7. Connect website to the database and store data to the database.
