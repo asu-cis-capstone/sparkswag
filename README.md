@@ -1,6 +1,6 @@
 # sparkswag
 
-#Spark Open Research Repository
+##Spark Open Research Repository
 
 <img src="http://database.sparkopenresearch.com/img/sparklogo.png" height=200 align="left">
 
