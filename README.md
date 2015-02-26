@@ -2,9 +2,9 @@
 
 #Spark Open Research Repository
 
-#<img src="http://database.sparkopenresearch.com/img/sparklogo.png" height=150 align="left">
-
 ##Overview
+
+#<img src="http://database.sparkopenresearch.com/img/sparklogo.png" align="left">
 
 The purpose of this project is to connect students with researchers in their field, providing real career experience prior to join the work force. Design a site that will allow researchers to CRUD research projects and students to view available research projects. The website should be similar to Facebook, LinkedIn, and Match.com. 
 
