@@ -4,8 +4,17 @@
 	<a href="./?opportunity">Opportunities</a>
 	<a href="./?opportunitylist">Create Opportunity</a>
 	
-	<!--Don't show my account if not logged in!!!-->
-	<a href="./?myaccount">My Account</a>
-	<!--Need to put in Log in link if not logged in!!!-->
-	<a href="./?logout">Log Out</a>
+	<?php
+	if($signedIn === true){
+		echo '
+		<a href="./?myaccount">My Account</a>
+		<a href="./?logout">Log Out</a>';
+	}else{
+		echo '
+		<a href="./?createaccount">Create Account</a>
+		<a href="./?login">Log In</a>';
+	}
+	?>
+	
+	
 </div>
