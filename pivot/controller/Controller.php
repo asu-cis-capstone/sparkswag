@@ -18,12 +18,12 @@
 			{
 				//View will have access to any $variables declared.
 				$pageTitle = 'Create Research Opportunity';
-				$this->model->getAddOpportunity();
+				//$this->model->getAddOpportunity();
 				require 'view/addopportunity.php';
 				
 			}elseif(isset($_GET['createaccount'])){
 				$pageTitle = 'Create User Account';
-				$this->model->getCreateUser();
+				//$this->model->getCreateUser();
 				require 'view/createuser.php';
 				
 			}elseif(isset($_GET['myaccount'])){
@@ -34,12 +34,16 @@
 			}elseif(isset($_GET['opportunitylist'])){
 				$pageTitle = 'Opportunity List';
 				require 'view/opportunitylist.php';
+			
+			}elseif(isset($_GET['login'])){
+				$pageTitle = 'Log in to Spark Open Research';
+				require 'view/login.php';
 			}
 			else
 			{
 				//Nothing matched.  Defaulting to homepage.
 				$pageTitle = 'Spark Open Research Database';
-				$this->model->getHomePage();
+				//$this->model->getHomePage();
 				require 'view/homepage.php';
 			}
 		}
