@@ -1,5 +1,5 @@
 <div id="navbar">
-	<img src="./images/logo.png" alt="">
+	<img src="./images/logo.png" alt="Spark Open Research navbar logo">
 	<a href="./">Home</a>
 	<a href="./?opportunity">Opportunities</a>
 	<a href="./?opportunitylist">Create Opportunity</a>

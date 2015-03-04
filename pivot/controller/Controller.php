@@ -21,7 +21,7 @@
 				$this->model->getAddOpportunity();
 				require 'view/addopportunity.php';
 				
-			}elseif(isset($_GET['user'])){
+			}elseif(isset($_GET['createaccount'])){
 				$pageTitle = 'Create User Account';
 				$this->model->getCreateUser();
 				require 'view/createuser.php';
