@@ -12,7 +12,8 @@
 		} 
 		
 		public function start()
-		{
+		{	
+			//This page is called when index.php?opportunity
 			if (isset($_GET['opportunity']))
 			{
 				//View will have access to any $variables declared.
@@ -24,14 +25,20 @@
 				$pageTitle = 'Create User Account';
 				$this->model->getCreateUser();
 				require 'view/createuser.php';
-			}elseif(isset($_GET['???'])){
-			
-			}elseif(isset($_GET['???'])){
-			
+				
+			}elseif(isset($_GET['myaccount'])){
+				$pageTitle = 'My Account';
+				require 'view/myaccount.php';
+				
+				
+			}elseif(isset($_GET['opportunitylist'])){
+				$pageTitle = 'Opportunity List';
+				require 'view/opportunitylist.php';
 			}
 			else
 			{
 				//Nothing matched.  Defaulting to homepage.
+				$pageTitle = 'Spark Open Research Database';
 				$this->model->getHomePage();
 				require 'view/homepage.php';
 			}
