@@ -5,7 +5,7 @@
 	<a href="./?opportunitylist">Create Opportunity</a>
 	
 	<?php
-	if($signedIn === true){
+	if($isSignedIn === true){
 		echo '
 		<a href="./?myaccount">My Account</a>
 		<a href="./?logout">Log Out</a>';

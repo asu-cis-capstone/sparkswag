@@ -2,7 +2,7 @@
 //Controller class acts as a router.
 //Will decide which model and view to call.
 	require_once("model/Model.php");
-
+	
 	class Controller {
 		public $model;
 		
@@ -13,6 +13,10 @@
 		
 		public function start()
 		{	
+			//$isSignedIn = true;
+			$isSignedIn = false;
+
+		
 			//This page is called when index.php?opportunity
 			if (isset($_GET['opportunity']))
 			{

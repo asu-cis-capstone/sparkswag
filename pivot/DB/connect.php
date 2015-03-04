@@ -1,15 +1,27 @@
 <?php
+require_once('DB/config.php');
+	
 class DB{
-	private $host = 'localhost';
-	private $user = 'user';
-	private $pw = 'pass';
-	private $db = 'dbname';
+	
+	private $host;
+	private $user;
+	private $pw;
+	private $db;
+	
 	private $connection;
 	private $insertUserSQL = 'insert into users (fname, lname, username, email, hashedPassword, levelOfAccess) values (:fname, :lname, :userName, :email, :hashedPassword, :levelOfAccess);';
 	private $queryUserSQL = 'select * from users where userName = :userName;';
 	
 	//DB object constructor
 	public function __construct (){
+		$DBconfig = new Config;
+	
+		$this->$host = $DBconfig->dbhost;
+		$this->$user = $DBconfig->dbuser;
+		$this->$pw = $DBconfig->dbpw;
+		$this->$db = $DBconfig->dbname;
+		
+	
 		try{
 			$this->connection = new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->pw);
 		}
