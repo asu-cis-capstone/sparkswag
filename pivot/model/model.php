@@ -6,7 +6,7 @@
 
 
 require_once("DB/connect.php");
-//$database = new DB();
+$database = new DB();
 
 class Model {
 

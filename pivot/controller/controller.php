@@ -1,17 +1,17 @@
 <?php
 //Controller class acts as a router.
 //Will decide which model and view to call.
-	require_once("model/Model.php");
+	require_once("model/model.php");
 	
 	class Controller {
-		public $model;
+		public $model; //should be object
 		
 		public function __construct()  
 		{  
 			$this->model = new Model();
 		} 
 		
-		public function start()
+		public function start($route)
 		{	
 			//$isSignedIn = true;
 			$isSignedIn = false;

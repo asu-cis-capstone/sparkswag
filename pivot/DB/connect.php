@@ -16,10 +16,10 @@ class DB{
 	public function __construct (){
 		$DBconfig = new Config;
 	
-		$this->$host = $DBconfig->dbhost;
-		$this->$user = $DBconfig->dbuser;
-		$this->$pw = $DBconfig->dbpw;
-		$this->$db = $DBconfig->dbname;
+		$this->host = $DBconfig->dbhost;
+		$this->user = $DBconfig->dbuser;
+		$this->pw = $DBconfig->dbpw;
+		$this->db = $DBconfig->dbname;
 		
 	
 		try{
