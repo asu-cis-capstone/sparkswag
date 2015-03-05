@@ -9,7 +9,7 @@ class DB{
 	private $db;
 	
 	private $connection;
-	private $insertUserSQL= 'INSERT INTO i1208878_drup1.User (UserNum, fname, lname, mname, address, city, state, zip, institution, fieldOfStudy, email, DOB, photo) VALUES (:UserNum, :fname, :lname, :mname, :address, :city, :state, :zip, :institution, :fieldOfStudy, :email, :DOB, :photo);';
+	private $insertUserSQL= 'INSERT INTO User (UserNum, fname, lname, mname, address, city, state, zip, institution, fieldOfStudy, email, DOB, photo, role, username, hashedpass) VALUES (:UserNum, :fname, :lname, :mname, :address, :city, :state, :zip, :institution, :fieldOfStudy, :email, :DOB, :photo, :role, :username, :hashedpass);';
 	
 	
 	//private $insertUserSQL = 'insert into users (fname, lname, username, email, hashedPassword, levelOfAccess) values (:fname, :lname, :userName, :email, :hashedPassword, :levelOfAccess);';

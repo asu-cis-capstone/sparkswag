@@ -23,7 +23,26 @@ class Model {
 	}
 	public function CreateUser(){
 		global $database;
-		$paramsArray  ;
+		d($_POST);
+		$paramsArray = array(
+			':UserNum'  => null,
+			':fname' => $_POST['firstname'],
+			':lname' => $_POST['lastname'],
+			':mname' => null,
+			':address' => null,
+			':city' => null,
+			':state' => null,
+			':zip' => null,
+			':institution' => $_POST['institution'],
+			':fieldOfStudy' => $_POST['fieldofstudy'],
+			':email' => $_POST['email'],
+			':DOB' => $_POST['birthday'],
+			':photo' => null,
+			':role' => $_POST['role'],
+			':username' => $_POST['username'],
+			':hashedpass' => ''
+			);
+		d($paramsArray);
 		$didItWork = $database->InsertUser($paramsArray);
 		
 		
