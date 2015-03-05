@@ -6,10 +6,10 @@ class Config{
 	public $dbname;
 	
 	public function __construct (){
-		$this->$dbhost = 'localhost';
-		$this->$dbuser = 'user';
-		$this->$dbpw = 'pass';
-		$this->$dbname = 'dbname';
+		$this->dbhost = 'localhost';
+		$this->dbuser = 'user';
+		$this->dbpw = 'pass';
+		$this->dbname = 'dbname';
 	}
 
 }
