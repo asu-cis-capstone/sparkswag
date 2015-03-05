@@ -4,11 +4,11 @@
 	session_start();
 	//use d($some_var); to dump var to screen.
 	require_once('kint/Kint.class.php');
-	d($_SERVER['REQUEST_URI']);
-	d($_SERVER['SCRIPT_NAME']);
-	d($_GET);
+	//d($_SERVER['REQUEST_URI']);
+	//d($_SERVER['SCRIPT_NAME']);
+	//d($_GET);
 	$route = explode('/', $_SERVER['REQUEST_URI']);
-	d($route);
+	//d($route);
 
 	
 	require_once("controller/controller.php");

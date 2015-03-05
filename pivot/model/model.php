@@ -15,15 +15,21 @@ class Model {
 	public function getHomePage()
 	{
 		return;
-		
 	}
 	
 	public function getAddOpportunity()
 	{
 		return;
 	}
-	public function getCreateUser(){
-		return;
+	public function CreateUser(){
+		global $database;
+		$paramsArray  ;
+		$didItWork = $database->InsertUser($paramsArray);
+		
+		
+		if($didItWork === true){
+			return 'Account Created successfully';
+		}
 	}
 	
 }

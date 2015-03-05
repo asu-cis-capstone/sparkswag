@@ -1,2 +1,3 @@
 sites/default/settings.php
 sites/all/modules/current_posts
+pivot/DB/config.php
