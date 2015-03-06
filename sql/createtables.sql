@@ -24,8 +24,11 @@ Create Table Staff (
 
 Create Table Student (
 	UserNum 	int UNSIGNED PRIMARY KEY,
+<<<<<<< HEAD
 	gpa         decimal (3,2) NULL,
 	gradeLevel	varchar(10) NULL,
+=======
+>>>>>>> 7d43c549ef105ea537ed9db515278b3fabbfed12
 	major		varchar(32) NULL,
 	studentResm	BLOB NOT NULL,
 	FOREIGN KEY (UserNum) REFERENCES User(UserNum)

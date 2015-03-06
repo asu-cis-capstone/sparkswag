@@ -6,7 +6,7 @@ require_once("template/navigationbar.php");
 
 <div id="contents">
 	
-	<form class="" action="?createaccount" method="post" id="createaccount" accept-charset="UTF-8">
+	<form class="" action="<?php echo $thisSite; ?>createaccount" method="post" id="createaccount" accept-charset="UTF-8">
 	
 	<div>Role *</div>
 	
