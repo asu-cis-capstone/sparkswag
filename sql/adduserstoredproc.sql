@@ -1,3 +1,4 @@
+DELIMITER $$
 Create Procedure Add_User(
     IN firstname varchar(32),
 	IN lastname varchar(32),
@@ -35,6 +36,9 @@ Else If(type = 'Student') /*Insert into student if role is student*/
 Then Begin
 Insert Into Student
 Select UserNum From User, gradeAverage, level, study, studentResume Where email = emailaddress;
-End;
-End If;
-END$$
+END;
+ElSE BEGIN
+END;
+END IF;
+END $$
+DELIMITER ;
