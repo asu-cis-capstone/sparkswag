@@ -10,10 +10,11 @@ class DB{
 	
 	private $connection;
 	private $insertUserSQL= 'INSERT INTO User (UserNum, fname, lname, mname, address, city, state, zip, institution, fieldOfStudy, email, DOB, photo, role, username, hashedpass) VALUES (:UserNum, :fname, :lname, :mname, :address, :city, :state, :zip, :institution, :fieldOfStudy, :email, :DOB, :photo, :role, :username, :hashedpass);';
+	private $checkUserPassSQL ='select * from User where username = :username and hashedpass = :hashedpass;';
 	
 	
-	//private $insertUserSQL = 'insert into users (fname, lname, username, email, hashedPassword, levelOfAccess) values (:fname, :lname, :userName, :email, :hashedPassword, :levelOfAccess);';
-	private $queryUserSQL = 'select * from users where userName = :userName;';
+	
+	private $queryUserSQL = 'select * from User where username = :username;';
 	
 	//DB object constructor
 	public function __construct (){
@@ -44,6 +45,7 @@ class DB{
 		$statement = $this->connection->prepare($this->queryUserSQL);
 		$passOrFail = $statement->execute( array(':userName' => $userName) );
 		$tuple = $statement->fetch(PDO::FETCH_ASSOC);
+		d($tuple);
 		if($tuple  !== false){
 			return $tuple;
 		}
@@ -52,6 +54,19 @@ class DB{
 			echo 'Failed showing user somehow!';
 		}
 		
+	}
+	public function CheckUserandPass($paramsArray){
+		$statement = $this->connection->prepare($this->checkUserPassSQL);
+		$passOrFail = $statement->execute( $paramsArray);
+		$tuple = $statement->fetch(PDO::FETCH_ASSOC);
+		d($tuple);
+		if($tuple  !== false){
+			return $tuple;
+		}
+		else{
+			return 'Username password combo failed!';
+			
+		}
 	}
 
 }

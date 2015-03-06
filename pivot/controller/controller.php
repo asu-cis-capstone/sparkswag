@@ -28,7 +28,7 @@
 			
 			case 'createaccount':
 				$pageTitle = 'Create User Account';
-				if(count($_POST)>0)
+				if(count($_POST) > 0)
 				{	
 					$successMsg = $this->model->CreateUser();
 					require 'view/createusersuccess.php';
@@ -49,7 +49,14 @@
 			
 			case 'login':
 				$pageTitle = 'Log in to Spark Open Research';
-				require 'view/login.php';
+				if(count($_POST) > 0)
+				{
+					$successMsg = $this->model->UserLogIn();
+					require 'view/loginsuccess.php';
+					
+				}else{
+					require 'view/login.php';
+				}
 			break;
 			
 			default:

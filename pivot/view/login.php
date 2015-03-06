@@ -5,7 +5,7 @@ require_once("template/navigationbar.php");
 
 
 <div id="contents">
-	<form id="login" action="?login" method="post">
+	<form id="login" action="<?php echo $thisSite; ?>login" method="post">
 	<div class="" >
 	
 	<label for="username">Username</label>

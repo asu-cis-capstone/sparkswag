@@ -38,17 +38,30 @@ class Model {
 			':email' => $_POST['email'],
 			':DOB' => $_POST['birthday'],
 			':photo' => null,
-			':role' => $_POST['role'],
+			':role' => null,//$_POST['role'],
 			':username' => $_POST['username'],
-			':hashedpass' => ''
+			':hashedpass' => hash('sha256', '123456')
 			);
 		d($paramsArray);
 		$didItWork = $database->InsertUser($paramsArray);
-		
+		d($didItWork);
 		
 		if($didItWork === true){
 			return 'Account Created successfully';
 		}
+	}
+	
+	public function UserLogIn(){
+		global $database;
+		d($_POST);
+		$paramsArray = array(
+		 ':username' => $_POST['username'],
+		 ':hashedpass' => hash('sha256', $_POST['password'])
+		 );
+		 d($paramsArray);
+		
+		$userInfo = $database->CheckUserandPass($paramsArray);
+		d($userInfo);
 	}
 	
 }
