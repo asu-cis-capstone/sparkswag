@@ -1,31 +1,34 @@
-Create Table Staff (
-	StaffNum 	int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Create Table User (
+	UserNum		int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	fname 		varchar(32) NOT NULL,
 	lname		varchar(32) NOT NULL,
-	mname		varchar(32) NULL,
-	address		varchar(32) NULL,
+	mname		varchar(32) NULL,	
+	address		varchar(50) NULL,
 	city		varchar(32) NULL,
 	state 		varchar(15) NULL,
-	zip		numeric NULL,
-	field		varchar(32) NULL,
+	zip			numeric NULL,
+	institution varchar(32) NULL,
+	fieldOfStudy varchar(32) NULL,
+	email		varchar(100) NOT NULL,
+	DOB			DATE NOT NULL,
+	photo 		BLOB NULL
+	
+)
+Create Table Staff (
+	UserNum 	int UNSIGNED PRIMARY KEY,
 	department	varchar(32) NULL,
-	institution 	varchar(32) NULL,
-	staffPhoto	BLOB NULL,
-	staffCV		BLOB NOT NULL
+	staffCV		BLOB NOT NULL,
+	title		varchar(32) NULL,
+	FOREIGN KEY (UserNum) REFERENCES User(UserNum)
 );
 
 Create Table Student (
-	StudentNum 	int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	fname 		varchar(32) NOT NULL,
-	lname		varchar(32) NOT NULL,
-	mname		varchar(32) NULL,
-	address		varchar(32) NULL,
-	city		varchar(32) NULL,
-	state 		varchar(15) NULL,
-	zip		numeric	NULL,
+	UserNum 	int UNSIGNED PRIMARY KEY,
+	gpa         decimal (3,2) NULL,
+	gradeLevel	varchar(10) NULL,
 	major		varchar(32) NULL,
-	studentPhoto 	BLOB NULL,
-	studentResm	BLOB NOT NULL
+	studentResm	BLOB NOT NULL,
+	FOREIGN KEY (UserNum) REFERENCES User(UserNum)
 );
 
 Create Table Listing (
@@ -43,7 +46,7 @@ Create Table Listing (
 	gpaRequire	decimal(3, 2) NULL,
 	gradeRequire	varchar(10) NULL,
 	paid		varchar(3) NOT NULL,
-	FOREIGN KEY (StaffNum) REFERENCES Staff(StaffNum)
+	FOREIGN KEY (StaffNum) REFERENCES Staff(UserNum)
 );
 
 Create Table registration (
@@ -51,6 +54,6 @@ Create Table registration (
 	StudentNum	int UNSIGNED NOT NULL,
 	ListingNum	int UNSIGNED NOT NULL,
 	RegistrDate	date NOT NULL,
-	FOREIGN KEY (StudentNum) REFERENCES Student(StudentNum),
+	FOREIGN KEY (StudentNum) REFERENCES Student(UserNum),
 	FOREIGN KEY (ListingNum) REFERENCES Listing(ListingNum)
 );
