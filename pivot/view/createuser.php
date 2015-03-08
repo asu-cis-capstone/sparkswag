@@ -36,7 +36,7 @@ require_once("template/navigationbar.php");
 
 
 	<label for="password">Password *</label>
-	 <input class="form-control" type="text" id="password" name="password" value="" size="60" maxlength="60" required title=""  >
+	 <input class="form-control" type="password" id="password" name="password" value="" size="60" maxlength="60" required title=""  onchange="form.confirmpassword.pattern=this.value;" >
 	 
 	 
 	</div>
@@ -46,7 +46,7 @@ require_once("template/navigationbar.php");
 
 
 	<label for="password">Confirm Password *</label>
-	 <input class="form-control" type="text" id="confirmpassword" name="password" value="" size="60" maxlength="60" required title=""  >
+	 <input class="form-control" type="password" id="confirmpassword" name="password" value="" size="60" maxlength="60" required title=""  >
 	 
 	 
 	</div>
