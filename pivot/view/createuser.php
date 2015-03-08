@@ -4,80 +4,123 @@ require_once("template/navigationbar.php");
 ?>
 
 
-<div id="contents">
+<div id="contents" class="container pull-down">
 	
-	<form class="" action="<?php echo $thisSite; ?>createaccount" method="post" id="createaccount" accept-charset="UTF-8">
-	
-	<div>Role *</div>
-	
-	<div class="" >
-	
-	<input type="radio" id="researcher" name="role" value="researcher" class="" />
-	<label for="researcher">Researcher </label>
+	<form class="form-horizontal" action="<?php echo $thisSite; ?>createaccount" method="post" id="createaccount" accept-charset="UTF-8" role="form">
 	
 	
-	</div>
-	<div class="" >
+	<div class="form-group">
+	<label>Role *</label>
+	<div class="radio form-control" style="padding-bottom:50px;">
 	
-	<input type="radio" id="student" name="role" value="student" class="" />
-	<label for="student">Student </label>
+	<label for="researcher">
+	<input type="radio" id="researcher" name="role" value="researcher" onclick="showResearcherForm()" required>Researcher</label><br>
+	
+	<label for="student">
+	<input type="radio" id="student" name="role" value="student" onclick="showStudentForm()" required checked>Student</label>
 
 	 
 	</div>
-	<div class="" >
+	</div>
+	<div class="form-group" >
 	
 
 
 	<label for="username">Username *</label>
-	 <input class="" type="text" id="username" name="username" value="" size="60" maxlength="60" />
+	 <input class="form-control" type="text" id="username" name="username" value="" size="60" maxlength="60" required title="" >
 	 
 	 
 	</div>
-	<div class="" >
+	<div class="form-group" >
+	
+
+
+	<label for="password">Password *</label>
+	 <input class="form-control" type="text" id="password" name="password" value="" size="60" maxlength="60" required title=""  >
+	 
+	 
+	</div>
+	
+	<div class="form-group" >
+	
+
+
+	<label for="password">Confirm Password *</label>
+	 <input class="form-control" type="text" id="confirmpassword" name="password" value="" size="60" maxlength="60" required title=""  >
+	 
+	 
+	</div>
+	
+	<div class="form-group" >
 	
 
 	 <label for="email">E-mail address *</label>
-	 <input class="  " type="text" id="email" name="email" value="" size="60" maxlength="254" />
+	 <input class="form-control" type="text" id="email" name="email" value="" size="60" maxlength="254" required title=""  >
 
 	</div>
-	<div class="" >
+	<div class="form-group" >
 	
 	 
 	<label for="firstname">First Name *</label>
-	 <input class="" type="text" id="firstname" name="firstname" value="" size="60" maxlength="255" />
+	 <input class="form-control" type="text" id="firstname" name="firstname" value="" size="60" maxlength="255" required title=""  >
 
 	</div>
-	<div class="" >
+	<div class="form-group" >
 	
 	 
 	<label for="lastname">Last Name *</label>
-	 <input class="   " type="text" id="lastname" name="lastname" value="" size="60" maxlength="255" />
+	 <input class="form-control" type="text" id="lastname" name="lastname" value="" size="60" maxlength="255" required title=""  >
 
 	</div>
-	<div class="" >
+	<div class="form-group" >
 	
 	 
 	<label for="institution">Institution *</label>
-	 <input class="   " type="text" id="institution" name="institution" value="" size="60" maxlength="255" />
+	 <input class="form-control" type="text" id="institution" name="institution" value="" size="60" maxlength="255" required title=""  >
 
 	</div>
-	<div class="" >
+	<div class="form-group" >
 	
 	 
 	<label for="fieldofstudy">Field of Study </label>
-	 <input class="  " type="text" id="fieldofstudy" name="fieldofstudy" value="" size="60" maxlength="255" />
+	 <input class="form-control" type="text" id="fieldofstudy" name="fieldofstudy" value="" size="60" maxlength="255" required title=""  >
 
 	</div>
-	<div class="" >
+	<div class="form-group" >
 	
 
 	<label for="birthday">Birthday *</label>
-	<input type="date" id="birthday" name="birthday">
+	<input type="date" id="birthday" name="birthday" class="form-control"  required title="" >
 		
 	</div>
-	<div class="" >
 	
-	<input class="" id="submit" name="submit" value="Create new account" type="submit">
+	<div class="form-group" id="staffDiv" style="display:none;">
+ 
+  
+	 <label for="department">Department *</label>
+	  <input class="form-control" type="text" id="department" name="department" value="" size="60" maxlength="255"   title="" ><br >
+	 <label for="title">Title</label>
+	  <input class="form-control" type="text" id="title" name="title" value="" size="60" maxlength="255" ><br >
+	 <label for="staffcv">CV *</label>
+	  <input class="form-control" type="file" id="staffcv" name="staffcv"  ><br >
+
+	 </div>
+	 <div class="form-group" id="studentDiv" >
+	 
+	  
+	 <label for="gpa">GPA *</label>
+	  <input class="form-control" type="text" id="gpa" name="gpa" value="" size="60" maxlength="255" ><br >
+	 <label for="gradeLevel">Grade Level *</label>
+	  <input class="form-control" type="text" id="gradeLevel" name="gradeLevel" value="" size="60" maxlength="255" ><br >
+	 <label for="major">Major *</label>
+	  <input class="form-control" type="text" id="major" name="major" value="" size="60" maxlength="255" ><br > 
+
+	 </div>
+	
+	
+	<div class="form-group" >
+	
+	<button class="btn btn-default btn-large" id="submit" name="submit" value="Create new account" type="submit">Create User</button>
 	
 	</div>
 	

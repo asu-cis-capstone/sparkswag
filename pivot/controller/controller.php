@@ -1,6 +1,7 @@
 <?php
 //Controller class acts as a router.
 //Will decide which model and view to call.
+	//$_SESSION['userInfo'] = "";
 	require_once("model/model.php");
 	$thisSite = $_SERVER["REQUEST_SCHEME"]. '://' . $_SERVER["SERVER_NAME"]. '/';
 	
@@ -20,10 +21,17 @@
 			
 			switch($route[1]){
 			case 'opportunity':
-				//View will have access to any $variables declared.
-				$pageTitle = 'Create Research Opportunity';
-				//$this->model->getAddOpportunity();
-				require 'view/addopportunity.php';
+				if(count($_POST) > 0){
+					//d($_FILES);
+					$pageTitle = 'Research Opportunity Created';
+					$this->model->CreateOpportunity();
+					require 'view/addopportunitysuccess.php';
+				}else{
+					//View will have access to any $variables declared.
+					$pageTitle = 'Create Research Opportunity';
+					//$this->model->getAddOpportunity();
+					require 'view/addopportunity.php';
+				}
 			break;
 			
 			case 'createaccount':
@@ -43,8 +51,18 @@
 			break;
 			
 			case 'opportunitylist':
-				$pageTitle = 'Opportunity List';
-				require 'view/opportunitylist.php';
+				if(isset($route[2])){
+					$pageTitle = 'Opportunity List';
+					$listingRow = $this->model->ShowListing($route[2]);
+					//d($route[2]);
+					//d($listingRow);
+					require 'view/singleopportunity.php';
+				}else{
+					$allListings = $this->model->ShowAllListings();
+					
+					$pageTitle = 'Opportunity List';
+					require 'view/opportunitylist.php';
+				}
 			break;
 			
 			case 'login':
@@ -52,11 +70,29 @@
 				if(count($_POST) > 0)
 				{
 					$successMsg = $this->model->UserLogIn();
-					require 'view/loginsuccess.php';
+					if($successMsg !== false){
+						require 'view/loginsuccess.php';
+					}
+					else{
+						require 'view/login.php';
+					}
+					//d($successMsg);
 					
 				}else{
 					require 'view/login.php';
 				}
+			break;
+			
+			case 'logout':
+				$pageTitle = 'Log out from Spark Open Research';
+				$this->model->UserLogOut();
+				require 'view/logout.php';
+			break;
+			
+			case 'admin':
+				$pageTitle = 'Administration Panel';
+				//$this->model->UserLogOut();
+				require 'view/admin.php';
 			break;
 			
 			default:
