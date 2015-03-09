@@ -3,11 +3,32 @@ require_once("template/header.php");
 require_once("template/navigationbar.php");
 ?>
 
-
-<div id="contents">
-	<h1>User account creation successful!</h1>
-	<p>Your password has been mailed to you.</p>
-</div>
+	<div id="contents" class="container pull-down">
+	<p></p>
+	<p></p>
+	<p><h1>User account creation successful!</h1></p>
+		<p class="bold">
+			<?php
+				date_default_timezone_set('MST');
+				$time = date('H');
+				if ($time < '12')
+				{
+					echo "Good Morning! Thanks you for registering!";
+				}
+				elseif ($time < '17')
+				{
+					echo "Good Afternoon! Thanks you for registering!";
+				}
+				else
+				{
+					echo "Good Evening! Thanks you for registering!";
+				}
+			?>
+		</p>
+		<p> Your information has been added to our database. </p>
+		<p class="bold">
+		Click <a href="<?php echo $thisSite; ?>login">here</a> to login</p>
+	</div>
 
 
 <?php 
