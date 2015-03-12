@@ -23,9 +23,11 @@ class Model {
 	}
 	public function CreateUser(){
 		global $database;
-		d($_POST);
+		//d($_POST);
 		//$fileName = $this->uploadPhoto('profilepic');
-		
+		$username = array(
+			':username' => $_POST['username']
+		);
 		$paramsArray = array(
 			':UserNum'  => null,
 			':fname' => $_POST['firstname'],
@@ -47,7 +49,21 @@ class Model {
 		//d($paramsArray);
 		$didItWork = $database->InsertUser($paramsArray);
 		//d($didItWork);
-		
+		d($_POST['role']);
+		if($_POST['role'] === 'researcher'){
+			$paramsStaffArray = array(
+				':UserNum' => $database->findUserNum($username),
+				':department' => $_POST['department'],
+				':staffCV' => null,
+				':title' => $_POST['title']
+			);
+			$staffTable = $database->InsertStaff($paramsStaffArray);
+			d($staffTable);
+			d($paramsStaffArray);
+			if($staffTable === true){
+				return 'Staff inserted';
+			}
+		}
 		if($didItWork === true){
 			return 'Account Created successfully';
 		}
@@ -117,6 +133,12 @@ class Model {
 		return $result;
 		
 	}
+	
+	public function ShowRecentListings(){
+		global $database;
+		$result = $database->ShowRecentListings();
+		return $result;
+	}
 	public function uploadPhoto($inputName){
 		//<input type="file" name="$inputName">
 		
@@ -163,6 +185,66 @@ class Model {
 			$strang .= mt_rand(0,9);
 		}
 		return $strang;
+	}
+	
+	public function SendPasswordReset(){
+		global $database;
+		$param = array( ':email' => $_POST['email']);
+		$result = $database->FindEmail($param);
+		if($result !== false){
+			mail(
+				$_POST['email'],
+				'Spark Open Research - Password Reset',
+				'Your new password is: ',
+				'From: DoNotReply <donotreply@sparkopenresearch.com>'
+			);
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public function AccessPermissions($page){
+		switch($page){
+			case 'admin':
+				if( !isset($_SESSION['userInfo']) || 
+					!isset($_SESSION['userInfo']['role']) ||
+					$_SESSION['userInfo']['role'] !== 'admin'){
+					return false;
+				}
+			break;
+			
+			case 'myaccount':
+				if( !isset($_SESSION['userInfo']) || 
+					!isset($_SESSION['userInfo']['role']) ){
+					return false;
+				}
+			break;
+			
+			case 'createopportunity':
+				if( !isset($_SESSION['userInfo']) || 
+					!isset($_SESSION['userInfo']['role']) ||
+					$_SESSION['userInfo']['role'] !== 'researcher'){
+					return false;
+				}
+			break;
+			
+			case 'admin':
+				if( !isset($_SESSION['userInfo']) || 
+					!isset($_SESSION['userInfo']['role']) ||
+					$_SESSION['userInfo']['role'] !== 'admin'){
+					return false;
+				}
+			break;
+			
+			default:
+				return true;
+			break;
+		}
+		
+		
+		
+		
 	}
 }
 ?>

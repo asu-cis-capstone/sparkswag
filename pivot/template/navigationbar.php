@@ -29,14 +29,14 @@
 							&& $_SESSION['userInfo']['role'] === "researcher") {
 						
 						echo '<li>
-							<a href="'.$thisSite.'opportunity">Create Opportunities</a>
+							<a href="'.$thisSite.'createopportunity">Create Opportunity</a>
 						</li>';
 						
 						}
 						?>
 					
 					<li>
-						<a href="<?php echo $thisSite; ?>opportunitylist">List Opportunity</a>
+						<a href="<?php echo $thisSite; ?>opportunities">Opportunities</a>
                     </li>
                     <?php
 					if(isset($_SESSION['userInfo']) && $_SESSION['userInfo']['role'] === 'admin') {
@@ -51,7 +51,7 @@
 					if(!isset($_SESSION['userInfo'])) {
 					echo '	
 						<li>
-                        <a href="'.$thisSite.'createaccount">Register</a>
+                        <a href="'.$thisSite.'register">Register</a>
 						</li>
 						<li>
                         <a href="'.$thisSite.'login">Login</a>

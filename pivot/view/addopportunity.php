@@ -3,11 +3,10 @@ require_once("template/header.php");
 require_once("template/navigationbar.php");
 ?>
 <div id="contents" class="container-fluid">
+	
+<form class="form-createopportunity pull-down" action="<?php echo $thisSite; ?>opportunity" method="post" id="researchopportunity" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
 <h1>Create a Research Opportunity</h1>
 	
-	
-<form class="" action="<?php echo $thisSite; ?>opportunity" method="post" id="researchopportunity" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
-
 <div  class="form-group">
 
 <label for="name">Name *</label>
@@ -18,7 +17,7 @@ require_once("template/navigationbar.php");
 
 
 <label for="description">Description *</label>
-<textarea class="form-control-justin" id="description" name="description" cols="60" rows="5" required title="Please enter a description for your opportunity!"></textarea>
+<textarea class="form-control-justin" id="description" name="description" cols="60" rows="5" maxlength="255" required title="Please enter a description for your opportunity!"></textarea>
 
 </div>
 <div  class="form-group">
@@ -52,38 +51,39 @@ require_once("template/navigationbar.php");
 <div  class="form-group">
 
 
- <label for="institution">Institution </label>
- <input class="form-control-justin" type="text" id="institution" name="institution" value="" size="10" maxlength="30" />
+ <label for="institution">Institution *</label>
+ <input class="form-control-justin" type="text" id="institution" name="institution" value="" size="10" maxlength="50" required />
 
 </div>
 <div  class="form-group">
 
 
  <label for="institutiontype">Institution Type </label>
- <input class="form-control-justin" type="text" id="institutiontype" name="institutiontype" value="" size="10" maxlength="30" />
+ <input class="form-control-justin" type="text" id="institutiontype" name="institutiontype" value="" size="10" maxlength="50" />
 
 </div>
 <div  class="form-group">
 
 
  <label for="discipline">Discipline </label>
- <input class="form-control-justin" type="text" id="discipline" name="discipline" value="" size="10" maxlength="30" />
+ <input class="form-control-justin" type="text" id="discipline" name="discipline" value="" size="10" maxlength="50" />
 
 </div>
 <div  class="form-group">
 
 
  
- <label for="logo">Logo </label>
- <input class="form-control-justin" type="file" id="logo" name="logo1"  />
+ <label for="logo1">Logo </label>
+ <input class="form-control-justin" type="file" id="logo1" name="logo1"  />
 
 </div>
+
 <div  class="form-group">
 
 
  
 <label for="homepage">Opportunity Homepage </label>
- <input class="form-control-justin" type="text" id="homepage" name="homepage" value="" size="10" maxlength="100" />
+ <input class="form-control-justin" type="text" id="homepage" name="homepage" value="" size="10" maxlength="50" />
 
 </div>
 <div  class="form-group">
