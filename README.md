@@ -20,7 +20,7 @@ Spark Open Research Repository is built with Drupal 7.34 which requires:
 + A database utilizing MySQL 4.1+ or PostgreSQL 7.1
 + PHP 5.2+ (We're using PHP 5.4)
 
-##Spark Open Research Video
+##v0.4 Spark Open Research Video
 https://youtu.be/IKJ9-__-5_o
 
 ##How to install
