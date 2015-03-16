@@ -30,12 +30,12 @@ require_once("template/navigationbar.php");
 <div  class="form-group form-inline">
 
 
- <label for="startdate">Start Date *</label>
- <input class="form-control" type="text" name="startdate" id="startdate" placeholder="MM/DD/YYYY" required>
+  <label for="startdate">Start Date *</label>
+ <input class="form-control" type="date" name="startdate" id="startdate" placeholder="MM/DD/YYYY" required>
  <label for="enddate">End Date *</label>
- <input class="form-control" type="text" name="enddate" id="enddate" placeholder="MM/DD/YYYY" required>
+ <input class="form-control" type="date" name="enddate" id="enddate" placeholder="MM/DD/YYYY" required>
  <label for="deadline">Application Deadline *</label>
- <input class="form-control" type="text" name="deadline" id="deadline" placeholder="MM/DD/YYYY" required>
+ <input class="form-control" type="date" name="deadline" id="deadline" placeholder="MM/DD/YYYY" required>
 
 </div>
 <div  class="form-group form-inline">
