@@ -106,10 +106,66 @@ require_once("template/navigationbar.php");
  	<option value="4">Senior</option></select>
 
 </div>
+
+<div  class="form-group">
+<label for="category">Category </label>
+ <select class="form-control-justin" id="category" name="category" required>
+ <option value="">Select a Category</option>
+ <option value="Aeronautical Engineering">Aeronautical Engineering</option> 
+ <option value="Anthropology">Anthropology</option> 
+ <option value="Architecture">Architecture</option> 
+ <option value="Astronomy">Astronomy</option> 
+ <option value="Biochemistry">Biochemistry</option> 
+ <option value="Biology">Biology</option> 
+ <option value="Biophysics">Biophysics</option> 
+ <option value="Chemical Engineering">Chemical Engineering</option> 
+ <option value="Chemistry">Chemistry</option> 
+ <option value="Civil Engineering">Civil Engineering</option> 
+ <option value="Computer Science">Computer Science</option> 
+ <option value="Criminology">Criminology</option> 
+ <option value="Cultural Studies">Cultural Studies</option> 
+ <option value="Design">Design</option> 
+ <option value="Digital Media">Digital Media</option> 
+ <option value="Earth Sciences">Earth Sciences</option> 
+ <option value="Economics">Economics</option> 
+ <option value="Education">Education</option> 
+ <option value="Electrical Engineering">Electrical Engineering</option> 
+ <option value="Engineering Management">Engineering Management</option> 
+ <option value="English">English</option> 
+ <option value="Environmental Sciences">Environmental Sciences</option> 
+ <option value="Geology">Geology</option> 
+ <option value="Graphic Design">Graphic Design</option> 
+ <option value="History">History</option> 
+ <option value="Human Geography">Human Geography</option> 
+ <option value="Information and Communication Technology">Information and Communication Technology</option> 
+ <option value="Information Technology">Information Technology</option> 
+ <option value="Interdisciplinary Studies">Interdisciplinary Studies</option> 
+ <option value="International Relations">International Relations</option> 
+ <option value="Law">Law</option> 
+ <option value="Linguistics">Linguistics</option> 
+ <option value="Literature">Literature</option> 
+ <option value="Mass Communication">Mass Communication</option> 
+ <option value="Mechanical Engineering">Mechanical Engineering</option> 
+ <option value="Media">Media</option> 
+ <option value="Nanoscience">Nanoscience</option> 
+ <option value="Natural History">Natural History</option> 
+ <option value="Oceanography">Oceanography</option> 
+ <option value="Physics">Physics</option> 
+ <option value="Politics">Politics</option> 
+ <option value="Psychology">Psychology</option> 
+ <option value="Science and Technology Policy">Science and Technology Policy</option> 
+ <option value="Sociology">Sociology</option> 
+ <option value="Space Sciences">Space Sciences</option> 
+ <option value="Sustainability">Sustainability</option> 
+ <option value="Telecommunications">Telecommunications</option>
+ <option value="Other">Other</option>
+</div>
+
+
 <div  class="checkbox">
 
 
- <label><input class="" type="checkbox" id="paid" name="paid" value="1" class="" />Paid</label>
+<label><input class="" type="checkbox" id="paid" name="paid" value="1" class="" />Paid</label>
 
 </div>
 <div  class="">
