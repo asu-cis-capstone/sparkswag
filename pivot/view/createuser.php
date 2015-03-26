@@ -143,13 +143,13 @@ require_once("template/navigationbar.php");
 		<label for="gpa">GPA *</label>
 		<input class="form-control" type="text" id="gpa" name="gpa" value="" size="60" maxlength="255" placeholder="GPA" ><br >
 		
-		<label for="gradeLevel">Grade Level *</label>
+	<label for="gradeLevel">Grade Level *</label>
 		<!--<input class="form-control" type="text" id="gradeLevel" name="gradeLevel" value="" size="60" maxlength="255" placeholder="Grade Level">-->
 		<select name="gradeLevel" >
 			<option value="highschool">High School</option>
-			<option value="communitycollege">Community College</option>
-			<option value="undergraduate">Undergraduate</option>
-			<option value="graduate">graduate</option>
+			<option value="communitycollege">2-Year Institution</option>
+			<option value="undergraduate">4-Year Institution</option>
+			<option value="graduate">Graduate</option>
 		</select>
 		<br >
 		
