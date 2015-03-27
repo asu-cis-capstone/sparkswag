@@ -80,7 +80,7 @@ https://youtu.be/IKJ9-__-5_o
 * Technology Pivot
 * Built a new webpage from scatch using MVC architecture to build the website (http://pivot.sparkopenresearch.com/)
 * Project Demo Video (https://youtu.be/IKJ9-__-5_o)
-* 
+
 ** Release Version 0.5 **
 * Added refined search functionality
 * Created backend validation for forms
