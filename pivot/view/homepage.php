@@ -20,37 +20,39 @@ require_once("template/navigationbar.php");
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                     	<div id="logo"><img class="logo" src="/img/sparklogo.png"/></div>
-                        <!---<h1 class="brand-heading">Grayscale</h1>--->
+                        
 
                         <h2>discover <span class="olive">•</span> connect <span class="olive">•</span> learn</h2>
                                                    <div id="imaginary_container">
-							<div class="input-group stylish-input-group">
-                    			<input type="text" class="form-control"  placeholder="Spark something." autofocus style="color: white";>
+							<form action="<?php echo $thisSite; ?>opportunities" method="post" role="form" class="input-group stylish-input-group">
+                    			<input type="text" name="searchText" class="form-control"  placeholder="Spark something." autofocus style="color: white";>
                    				<span class="input-group-addon">
                         			<button type="submit">
                           		<span class="glyphicon glyphicon-search"></span>
                        					 </button>  
                    				 </span>
-              			 	</div>
+						    </form>
                             
                            </div>
  						<p class="intro-text"><img class="logo" src="/img/sublogo.png" /></p>
-                        		<a href="#about" class="btn btn-circle page-scroll">
+                        		<a href="#download" class="btn btn-circle page-scroll">
                            			 <i class="fa fa-angle-double-down animated"></i>
                        			</a>
                     </div>
                 </div>
             </div>
-            <div class="fb-facepile" style="margin: 0 auto;" data-href="https://www.facebook.com/sparkopenresearch" data-max-rows="1" data-colorscheme="dark" data-size="medium" data-show-count="true"></div>
+            <div class="fb-facepile" style="margin: 35px auto;" data-href="https://www.facebook.com/sparkopenresearch" data-max-rows="1" data-colorscheme="dark" data-size="medium" data-show-count="true"></div>
         </div>
     </header>
 
     <!-- About Section -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+        	<div class="container">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About Spark</h2>
                 <p>What students learn in the classroom does not always connect with the skills needed to succeed in higher education or as part of the workforce. Traditional internships, research opportunities, and practical experiences are important to prepare students for the future. However, existing opportunities only accommodate a small fraction of motivated students.</p>
+            </div>
             </div>
         </div>
     </section>

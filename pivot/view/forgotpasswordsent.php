@@ -4,13 +4,13 @@ require_once("template/navigationbar.php");
 ?>
 
 <div class="vertical-center">
-<div id="contents" class="container ">
+<div id="contents" class="container pull-down">
 	<h1>Password Reset</h1>
 	<p>
-	<?php if($errorMessage === true){
+	<?php if($errorMessage === ''){
 			echo 'Check your email for your new password.';
 		}else{
-			echo 'Email address not found in the system.';
+			echo $errorMessage;
 		} ?>
 	</p>
 </div>

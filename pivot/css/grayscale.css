@@ -102,6 +102,12 @@ p {
     line-height: 1.5;
 }
 
+p.form {
+	margin: 0 0 10px;
+	font-size: 14px;
+	color: #ffffff;
+}
+
 @media(min-width:768px) {
     p {
         margin: 0 0 35px;
@@ -458,3 +464,6 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
+
+/* STEP FORM */
+

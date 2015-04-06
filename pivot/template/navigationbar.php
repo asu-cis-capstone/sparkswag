@@ -9,7 +9,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <span class="olive"><i class="fa fa-play-circle"></i></span>  <span class="light">Spark</span> Open Research
+                    <span class="olive"><i class="fa fa-play-circle"></i></span>  <span class="light">Sparklr</span> Research Database
                 </a>
             </div>
 
@@ -26,7 +26,7 @@
 					
 						<?php
 						if(isset($_SESSION['userInfo'])
-							&& $_SESSION['userInfo']['role'] === "researcher") {
+							&& $_SESSION['userInfo']['role'] === "profession") {
 						
 						echo '<li>
 							<a href="'.$thisSite.'createopportunity">Create Opportunity</a>

@@ -6,9 +6,7 @@ require_once("template/navigationbar.php");
 <div id="contents" class="container">
 	<?php echo d($listingRow); ?>
 	<h1>Research Opportunity</h1>
-	<p>[insert logo here]</p>
-	<p>Title: <?php echo $listingRow['name']; ?></p>
-	<img src="/<?php echo$listingRow['logo'];?>" alt="nothing">
+	<p>Title: <?php echo $listingRow['title']; ?></p>
 	<p>Description: <?php echo $listingRow['detailedDescription']; ?></p>
 	<p>Positions Available: <?php echo $listingRow['positionAvailable']; ?></p>
 	<p>Start Date: <?php echo $listingRow['startDate']; ?></p>
@@ -16,7 +14,7 @@ require_once("template/navigationbar.php");
 	<p>Application Deadline: <?php echo $listingRow['deadline']; ?></p>
 	<p>Institution: <?php echo $listingRow['institution']; ?></p>
 	<p>Institution Type: <?php echo $listingRow['institutionType']; ?></p>
-	<p>Homepage: <?php echo $listingRow['opportunityHomepage']; ?></p>
+	<p>Homepage: <?php echo $listingRow['url']; ?></p>
 	<p>City: <?php echo $listingRow['locationCity']; ?></p>
 	<p>State: <?php echo $listingRow['locationState']; ?></p>
 	<p>Grade level Required: <?php echo $listingRow['gpaRequire']; ?></p>

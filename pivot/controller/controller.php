@@ -29,9 +29,17 @@
 			case 'createopportunity':
 				if(count($_POST) > 0){
 					//d($_FILES);
-					$pageTitle = 'Research Opportunity Created';
-					$this->model->CreateOpportunity();
-					require 'view/addopportunitysuccess.php';
+					$error = $this->model->validateOpportunity();
+					//d($error);
+					if(empty($error)){
+						$pageTitle = 'Research Opportunity Created';
+						$this->model->CreateOpportunity();
+						require 'view/addopportunitysuccess.php';
+					}
+					else {
+						$pageTitle = 'Create Research Opportunity';
+						require 'view/addopportunity.php';						
+					}
 				}else{
 					//View will have access to any $variables declared.
 					$pageTitle = 'Create Research Opportunity';
@@ -52,7 +60,13 @@
 			
 			case 'myaccount':
 				$pageTitle = 'My Account';
+				$successMsg ='';
+				if(count($_POST) > 0){
+					$successMsg = $this->model->UpdateUserField();
+				}
+				
 				require 'view/myaccount.php';
+				
 			break;
 			
 			case 'opportunities':
@@ -63,45 +77,55 @@
 					//d($listingRow);
 					require 'view/singleopportunity.php';
 				}else{
-					$allListings = $this->model->ShowAllListings();
-					$recentListings = $this->model->ShowRecentListings();
+					$Listings = (count($_POST) > 0)? $this->model->Search() : $this->model->ShowRecentListings();
+					
+				
 					$pageTitle = 'Opportunity List';
 					require 'view/opportunitylist.php';
 				}
 			break;
 			
 			case 'login':
-				$pageTitle = 'Log in to Spark Open Research';
+				$pageTitle = 'Log in to Sparklr Research Database';
+				$errorMessage = '';
 				if(count($_POST) > 0)
 				{
-					$successMsg = $this->model->UserLogIn();
-					if($successMsg !== false){
+					$errorMessage .= $this->model->UserLogIn();
+					if($errorMessage === ''){
 						require 'view/loginsuccess.php';
+						return;
 					}
-					else{
-						require 'view/login.php';
-					}
-					
-				}else{
-					require 'view/login.php';
 				}
+				require 'view/login.php';
 			break;
 			
 			case 'logout':
-				$pageTitle = 'Log out from Spark Open Research';
+				$pageTitle = 'Log out from Sparklr Research Database';
 				$this->model->UserLogOut();
 				require 'view/logout.php';
 			break;
 			
 			case 'admin':
-				$pageTitle = 'Administration Panel';
-				require 'view/admin.php';
+				if(isset($route[2]) && $route[2] === 'approval'){
+					$pageTitle = 'Opportunities Pending Approval';
+					$approved;
+					if(count($_POST) > 0){
+						$approved = $this->model->ApproveOpportunity();
+					}
+					$needsApproval = $this->model->ShowPendingApproval();
+					
+					require 'view/adminapproval.php';
+				}else{
+					$pageTitle = 'Administration Panel';
+					require 'view/admin.php';
+				}
 			break;
 			
 			case 'forgotpassword':
 				if(count($_POST) > 0)
 				{
 					$errorMessage = $this->model->SendPasswordReset();
+					$pageTitle = 'Forgot Password';
 					require 'view/forgotpasswordsent.php';
 				}else{
 					$pageTitle = 'Forgot Password';
@@ -111,7 +135,7 @@
 			
 			default:
 				//Nothing matched.  Defaulting to homepage.
-				$pageTitle = 'Spark Open Research Database';
+				$pageTitle = 'Sparklr Research Database Database';
 				require 'view/homepage.php';
 			break;
 			
