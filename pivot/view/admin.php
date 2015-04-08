@@ -6,8 +6,12 @@ require_once("template/navigationbar.php");
 
 <div id="contents" class="container pull-down">
 	<h1>Administration Panel</h1>
-	<a href="<?php echo $thisSite; ?>admin/approval">Pending Approval</a>
-	
+	<div  class="container ">
+		<a href="<?php echo $thisSite; ?>admin/approval">Pending Approval</a>
+	</div>
+	<div  class="container ">
+		<a href="<?php echo $thisSite; ?>admin/import">Import Opportunities</a>
+	</div>
 </div>
 
 

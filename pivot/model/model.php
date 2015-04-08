@@ -460,5 +460,10 @@ class Model {
 		}
 		return $approved ;
 	}
+	
+	public function ImportOpportunity(){
+		
+		
+	}
 }
 ?>

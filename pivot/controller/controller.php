@@ -1,6 +1,6 @@
 <?php
-//Controller class acts as a router.
-//Will decide which model and view to call.
+	//Controller class acts as a router.
+	//Will decide which model and view to call.
 	//$_SESSION['userInfo'] = "";
 	require_once("model/model.php");
 	$thisSite = $_SERVER["REQUEST_SCHEME"]. '://' . $_SERVER["SERVER_NAME"]. '/';
@@ -115,6 +115,16 @@
 					$needsApproval = $this->model->ShowPendingApproval();
 					
 					require 'view/adminapproval.php';
+					
+					
+				}elseif(isset($route[2]) && $route[2] === 'import'){
+					$pageTitle = 'Import Opportunities';
+					$imported;
+					if(count($_POST) > 0){
+						$imported = $this->model->ImportOpportunity();
+					}
+					
+					require 'view/adminimport.php';
 				}else{
 					$pageTitle = 'Administration Panel';
 					require 'view/admin.php';
