@@ -10,7 +10,7 @@ require_once("template/navigationbar.php");
 		<div class="container">
 		<div class="container">
 			<?php
-				echo count($approved['succeeded']) . ' approvals succeeded.';
+				echo '<div class="container">'. count($approved['succeeded']) . ' approvals succeeded.</div>';
 				foreach($approved['succeeded'] as $listingNum){
 					echo '<div class="row">
 							<div class="col-md-2">
@@ -21,7 +21,7 @@ require_once("template/navigationbar.php");
 			?>
 		</div>
 		<div class="container">
-				<?php echo count($approved['failed']) . ' approvals failed.';
+				<?php echo '<div class="container">'.count($approved['failed']) . ' approvals failed.</div>';
 					foreach($approved['failed'] as $listingNum){
 						echo '<div class="row">
 								<div class="col-md-2">

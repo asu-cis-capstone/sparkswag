@@ -24,19 +24,19 @@ require_once("template/navigationbar.php");
                 <span class="fa fa-question-circle"></span>
                 <p class="form">Who are you?</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 40, 'step-2');">
+            <div id="div2" class="col-md-2" onclick="javascript: resetActive(event, 40, 'step-2'); focusthis(1);">
                 <span class="fa fa-user"></span>
                 <p class="form">Login Credentials</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 60, 'step-3');">
+            <div id="div3" class="col-md-2" onclick="javascript: resetActive(event, 60, 'step-3'); focusthis(2);">
                 <span class="fa fa-file-text"></span>
                 <p class="form">Personal Info</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 80, 'step-4');">
+            <div id="div4" class="col-md-2" onclick="javascript: resetActive(event, 80, 'step-4'); focusthis(3);">
                 <span class="fa fa-mortar-board"></span>
                 <p class="form">Education Background</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 100, 'step-5');">
+            <div id="div5" class="col-md-2" onclick="javascript: resetActive(event, 100, 'step-5'); focusthis(4);">
                 <span class="fa fa-cloud-upload"></span>
                 <p class="form">Agree & Submit</p>
             </div>
@@ -56,7 +56,7 @@ require_once("template/navigationbar.php");
 	<input type="radio" id="student" name="role" value="student" onclick="showStudentForm()" required checked>Student</label>
 
 	 
-	</div>	<div class="col-md-10"></div>	<button class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 40, 'step-2');">NEXT</button>
+	</div>	<div class="col-md-10"></div>	<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 40, 'step-2'); focusthis(1); buttonpress(1);">NEXT</div>
 	</div>
             </div>
         </div>
@@ -70,7 +70,7 @@ require_once("template/navigationbar.php");
 	<!-- Username -->
 	<label for="username">Username *</label>
 	 <input class="form-control" type="text" id="username" name="username" 
-	 	value="" size="60" maxlength="60" required title="" 
+	 	value="" size="60" maxlength="60" required title=""
 	 	placeholder="Username">
 	 
 	 
@@ -93,7 +93,7 @@ require_once("template/navigationbar.php");
 	<label for="password">Confirm Password *</label>
 	 <input class="form-control" type="password" id="confirmpassword" name="password" 
 	 value="" size="60" maxlength="60" required title=""  
-	 placeholder="Password Confirmation">				<div class="col-md-10"></div>		<button class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-3');">NEXT</button>
+	 placeholder="Password Confirmation">				<div class="col-md-10"></div>		<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-3'); focusthis(2); buttonpress(2);">NEXT</div>
 	 
 	</div>
             </div>
@@ -107,7 +107,7 @@ require_once("template/navigationbar.php");
 	 
 	<label for="firstname">First Name *</label>
 	 <input class="form-control" type="text" id="firstname" name="firstname" 
-	 value="" size="60" maxlength="255" required title=""  
+	 value="" size="60" maxlength="255" required title="" 
 	 placeholder="First Name">
 
 	</div>
@@ -125,7 +125,7 @@ require_once("template/navigationbar.php");
 
 	<label for="birthday">Birthday *</label>
 	<input type="date" id="birthday" name="birthday" class="form-control"  required title="" >
-					<div class="col-md-10"></div>			<button class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 80, 'step-4');">NEXT</button>
+					<div class="col-md-10"></div>			<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 80, 'step-4'); focusthis(3); buttonpress(3);">NEXT</div>
 	</div>
             </div>
         </div>
@@ -138,7 +138,7 @@ require_once("template/navigationbar.php");
 	 
 	<label for="institution">Institution *</label>
 	 <input class="form-control" type="text" id="institution" name="institution" 
-	 value="" size="60" maxlength="255" required title=""  
+	 value="" size="60" maxlength="255" required title="" 
 	 placeholder="Institution">
 
 	</div>
@@ -160,7 +160,7 @@ require_once("template/navigationbar.php");
 		
 		<label for="gradeLevel">Grade Level *</label>
 		<!--<input class="form-control" type="text" id="gradeLevel" name="gradeLevel" value="" size="60" maxlength="255" placeholder="Grade Level">-->
-		<select name="gradeLevel" >
+		<select name="gradeLevel" class="form-control">
 			<option value="highschool">High School</option>
 			<option value="communitycollege">Community College</option>
 			<option value="undergraduate">Undergraduate</option>
@@ -170,7 +170,7 @@ require_once("template/navigationbar.php");
 		
 		<label for="major">Major *</label>
 		<input class="form-control" type="text" id="major" name="major" value="" size="60" maxlength="255" placeholder="Major" ><br > 
-		<div class="col-md-10"></div>		<button class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-5');">NEXT</button>
+		<div class="col-md-10"></div>		<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-5'); focusthis(4); buttonpress(4);">NEXT</div>
 	 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@ require_once("template/navigationbar.php");
 		<label for="agree">I agree to the 
 			<a href="<?php echo $thisSite; ?>TermsAndConditions.txt">terms and conditions</a>
 		</label>
-		<input class="checkbox-inline" type="checkbox" id="agree" name="agree" value="1" required title="You must agree to the terms and conditions of the site. ">
+		<input class="checkbox-inline" type="checkbox" id="agree" name="agree" value="1" required title="You must agree to the terms and conditions of the site. " >
 		
 	</div>
 	
@@ -323,6 +323,50 @@ require_once("template/navigationbar.php");
         var id = "#" + step;
         $(id).addClass("activeStepInfo");
     }
+	
+	function focusthis(type)
+	{
+		if (type == 1)
+		{
+			document.getElementById("username").focus();
+		}
+		else if (type == 2)
+		{
+			document.getElementById("firstname").focus();
+		}
+		else if (type == 3)
+		{
+			document.getElementById("institution").focus();
+		}
+		else if (type == 4)
+		{
+			document.getElementById("agree").focus();
+		}
+	}
+	function buttonpress(type)
+	{
+		
+		if (type == 1)
+		{
+			$("#div1").removeClass("activestep");
+			$("#div2").addClass("activestep");   
+		}
+		else if (type == 2)
+		{
+			$("#div2").removeClass("activestep");
+			$("#div3").addClass("activestep");   
+		}
+		else if (type == 3)
+		{
+			$("#div3").removeClass("activestep");
+			$("#div4").addClass("activestep");   
+		}
+		else if (type == 4)
+		{
+			$("#div4").removeClass("activestep");
+			$("#div5").addClass("activestep");   
+		}
+	}
 </script>
 
 <!-- Steps Progress and Details - END -->

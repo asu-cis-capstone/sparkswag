@@ -18,27 +18,27 @@ echo "<script type='text/javascript'>alert('$error');</script>";
     </div>
 	<div class="row">
         <div class="row step">
-            <div id="div1" class="col-md-2 activestep" onclick="javascript: resetActive(event, 0, 'step-1');">
+            <div id="div1" class="col-md-2 activestep" onclick="javascript: resetActive(event, 0, 'step-1'); focusthis(1);">
                 <span class="fa fa-info-circle"></span>
                 <p class="form">Basic Info</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 20, 'step-2');">
+            <div id="div2" class="col-md-2" onclick="javascript: resetActive(event, 20, 'step-2'); focusthis(2);">
                 <span class="fa fa-calendar"></span>
                 <p class="form">Date & Hours</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 40, 'step-3');">
+            <div id="div3" class="col-md-2" onclick="javascript: resetActive(event, 40, 'step-3'); focusthis(3);">
                 <span class="fa fa-institution"></span>
                 <p class="form">Institution</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 60, 'step-4');">
+            <div id="div4" class="col-md-2" onclick="javascript: resetActive(event, 60, 'step-4'); focusthis(4);">
                 <span class="fa fa-exclamation-triangle"></span>
                 <p class="form">Requirements</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 80, 'step-5');">
+            <div id="div5" class="col-md-2" onclick="javascript: resetActive(event, 80, 'step-5'); focusthis(5);">
                 <span class="fa fa-file-text"></span>
                 <p class="form">Uploads</p>
             </div>
-            <div class="col-md-2" onclick="javascript: resetActive(event, 100, 'step-6');">
+            <div id="div6" class="col-md-2" onclick="javascript: resetActive(event, 100, 'step-6'); focusthis(6);">
                 <span class="fa fa-cloud-upload"></span>
                 <p class="form">Submit</p>
             </div>
@@ -50,7 +50,7 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 				<div class="col-md-12 well text-center">
 					<div class="form-group">
 						<label for="title">Title of Opportunity *</label>
-						<input class="form-control-justin" type="text" id="title" name="title" value="<?php if(isset($_POST['title'])){echo $_POST['title'];}?>" size="30" maxlength="255" required title="Please enter a name for your opportunity!" placeholder="Title of opportunity" />
+						<input class="form-control-justin" type="text" id="title" name="title" autofocus value="<?php if(isset($_POST['title'])){echo $_POST['title'];}?>" size="30" maxlength="255" required title="Please enter a name for your opportunity!" placeholder="Title of opportunity" />
 					</div>
 					<div  class="form-group">
 						<label for="description">Description *</label>
@@ -64,7 +64,7 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 						<label for="positions">Positions available *</label>
 						<input class="form-control-justin" type="text" id="positions" name="positions" size="10" maxlength="5" required pattern="[0-9]" title="Positions: must be numeric!" placeholder="Number of the opportunity available" value="<?php if(isset($_POST['positions'])){echo $_POST['positions'];}?>" />						
 						<div class="col-md-10"></div>						
-						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 20, 'step-2');">NEXT</div>						
+						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 20, 'step-2'); focusthis(2); buttonpress(1);">NEXT</div>						
 					</div>
 				</div>
 			</div>
@@ -85,7 +85,8 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 						<label for="locationCity">City *</label>
 						<input class="form-control" type="text" id="locationCity" name="locationCity" size="15" maxlength="100" placeholder="Enter the City" required value="<?php if(isset($_POST['locationCity'])){echo $_POST['locationCity'];}?>"/>
 						<label for="locationState">State *</label>
-						<select class="form-control" id="locationState" name="locationState" required><option value="">Select a State</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>						<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 40, 'step-3');">NEXT</div>						
+						<select class="form-control" id="locationState" name="locationState" required><option value="">Select a State</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>						
+						<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 40, 'step-3'); focusthis(3); buttonpress(2);">NEXT</div>						
 					</div>
 				</div>
 			</div>
@@ -109,7 +110,8 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 
 					<div  class="form-group">
 						<label for="url">URL</label>
-						<input class="form-control-justin" type="text" id="url" name="url" size="10" maxlength="50" placeholder="Enter Opportunity Homepage" value="<?php if(isset($_POST['url'])){echo $_POST['url'];}?>" />												<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-4');">NEXT</div>						
+						<input class="form-control-justin" type="text" id="url" name="url" size="10" maxlength="50" placeholder="Enter Opportunity Homepage" value="<?php if(isset($_POST['url'])){echo $_POST['url'];}?>" />												
+						<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-4'); focusthis(4); buttonpress(3);">NEXT</div>						
 					</div>
 				</div>
 			</div>
@@ -134,7 +136,8 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 					</div>
 					<div  class="form-group">
 						<label for="specialReq">Special Eligibility Requirements</label>
-						<textarea class="form-control-justin" id="specialReq" name="specialReq" cols="60" rows="5" maxlength="255" title="Enter any special requirements for your opportunity" placeholder="Enter any requirements for your opportunity" ></textarea>												<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 80, 'step-5');">NEXT</div>						
+						<textarea class="form-control-justin" id="specialReq" name="specialReq" cols="60" rows="5" maxlength="255" title="Enter any special requirements for your opportunity" placeholder="Enter any requirements for your opportunity" ></textarea>												
+						<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 80, 'step-5'); focusthis(5); buttonpress(4);">NEXT</div>						
 					</div>
 				</div>
 			</div>
@@ -197,7 +200,8 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 							<option value="Other">Other</option>
 						</select>
 					</div>-->
-					<div  class="form-group">  <label for="additionalDoc">Additional Documents or Materials </label> <input class="form-control-justin" type="file" id="additionalDoc" name="additionalDoc" />																<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-6');">NEXT</div>										</div>
+					<div  class="form-group">  <label for="additionalDoc">Additional Documents or Materials </label> <input class="form-control-justin" type="file" id="additionalDoc" name="additionalDoc" />																
+					<div class="col-md-10"></div>						<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-6'); focusthis(6); buttonpress(5);">NEXT</div>										</div>
 				</div>
 			</div>
 		</div>
@@ -340,6 +344,36 @@ echo "<script type='text/javascript'>alert('$error');</script>";
         var id = "#" + step;
         $(id).addClass("activeStepInfo");
     }
+	
+	function buttonpress(type)
+	{
+		
+		if (type == 1)
+		{
+			$("#div1").removeClass("activestep");
+			$("#div2").addClass("activestep");   
+		}
+		else if (type == 2)
+		{
+			$("#div2").removeClass("activestep");
+			$("#div3").addClass("activestep");   
+		}
+		else if (type == 3)
+		{
+			$("#div3").removeClass("activestep");
+			$("#div4").addClass("activestep");   
+		}
+		else if (type == 4)
+		{
+			$("#div4").removeClass("activestep");
+			$("#div5").addClass("activestep");   
+		}
+		else if (type == 5)
+		{
+			$("#div5").removeClass("activestep");
+			$("#div6").addClass("activestep");   
+		}
+	}
 </script>
 
 <!-- Steps Progress and Details - END -->
@@ -462,6 +496,36 @@ echo "<script type='text/javascript'>alert('$error');</script>";
         var id = "#" + step;
         $(id).addClass("activeStepInfo");
     }
+	
+	function focusthis(type)
+	{
+		if (type == 1)
+		{
+			document.getElementById("title").focus();
+		}
+		else if (type == 2)
+		{
+			document.getElementById("startdate").focus();
+		}
+		else if (type == 3)
+		{
+			document.getElementById("institution").focus();
+		}
+		else if (type == 4)
+		{
+			document.getElementById("gpareq").focus();
+		}
+		else if (type == 5)
+		{
+			document.getElementById("keywords").focus();
+		}
+		else if (type == 6)
+		{
+			document.getElementById("howToApply").focus();
+		}
+	}
+	
+	
 </script>
 <?php 
 
