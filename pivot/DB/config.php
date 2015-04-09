@@ -6,10 +6,10 @@ class Config{
 	public $dbname;
 	
 	public function __construct (){
-		$this->dbhost = 'localhost';
-		$this->dbuser = 'i1208878_drup1';
-		$this->dbpw = 'V]O~jU[7Yd28[)5';
-		$this->dbname = 'i1208878_drup1';
+		$this->dbhost = '';
+		$this->dbuser = '';
+		$this->dbpw = '';
+		$this->dbname = '';
 	}
 
 }
