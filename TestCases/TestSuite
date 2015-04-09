@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="edit profile success.html">edit profile success</a></td></tr>
+<tr><td><a href="loginfailed.html">loginfailed</a></td></tr>
+<tr><td><a href="loginsuccess.html">loginsuccess</a></td></tr>
+<tr><td><a href="LogoutSuccess.html">LogoutSuccess</a></td></tr>
+<tr><td><a href="password reset failed.html">password reset failed</a></td></tr>
+<tr><td><a href="passwordresetsuccess.html">passwordresetsuccess</a></td></tr>
+<tr><td><a href="PendingApprovalSuccessful.html">PendingApprovalSuccessful</a></td></tr>
+<tr><td><a href="RegisterSuccess.html">RegisterSuccess</a></td></tr>
+<tr><td><a href="admin not authorized.html">admin not authorized</a></td></tr>
+<tr><td><a href="myaccount not authorized.html">myaccount not authorized</a></td></tr>
+</tbody></table>
+</body>
+</html>

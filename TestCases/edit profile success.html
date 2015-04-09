@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://pivot.sparkopenresearch.com/" />
-<title>LogoutSuccess</title>
+<link rel="selenium.base" href="http://database.sparkopenresearch.com/" />
+<title>edit profile success</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">LogoutSuccess</td></tr>
+<tr><td rowspan="1" colspan="3">edit profile success</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -38,18 +38,33 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Opportunities</td>
+	<td>link=My Account</td>
 	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=i.fa.fa-pencil-square-o</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=fname</td>
+	<td>coffee</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='contents']/div[3]/div/p</td>
+	<td>First Name: coffee</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Log Out</td>
 	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>link=Login</td>
-	<td>Login</td>
 </tr>
 </tbody></table>
 </body>
