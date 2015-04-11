@@ -41,6 +41,11 @@ require_once("template/navigationbar.php");
 					<div class="col-md-2">
 						<input type="checkbox" name="ListingNum[]" value="'.$listing['ListingNum'].'">
 					</div>
+					<div class="col-md-2">
+						<a href="'.$thisSite. 'admin/delete/opportunity/' .$listing['ListingNum'].'">
+							<i class="fa fa-trash-o"></i>
+						</a>
+					</div>
 					<div class="col-md-4">
 						<a href="'.$thisSite.'opportunities/'.$listing['ListingNum'].'">
 							Project Title: '.$listing['title'].'

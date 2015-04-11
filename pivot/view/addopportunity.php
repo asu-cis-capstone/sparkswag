@@ -1,9 +1,9 @@
 <?php 
 require_once("template/header.php");
 require_once("template/navigationbar.php");
-if(isset($error) && $error !== ""){	
+/*if(isset($error) && $error !== ""){	
 echo "<script type='text/javascript'>alert('$error');</script>";
-}
+}*/
 ?>
 <!-- Steps Progress and Details - START -->
 <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
@@ -58,7 +58,16 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 					</div>
 					<div  class="form-group">
 						<label for="experienceType">Experience Type</label>
-						<select class="form-control-justin" id="experienceType" name="experienceType" title="Select an experience type"></select>
+						<select class="form-control-justin" id="experienceType" name="experienceType" title="Select an experience type">
+							<option value="ResearchExperience">Research Experience</option>
+							<option value="Volunteership">Volunteership</option>
+							<option value="Internship">Internship</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="form-group collapse" >
+						<label for="experienceTypeOther">If you select other please specify by filling out the field below.</label>
+						<input class="form-control-justin" type="text" id="experienceTypeOther" name="experienceTypeOther" placeholder="Other" style="display:none;">
 					</div>
 					<div  class="form-group">
 						<label for="positions">Positions available *</label>
@@ -74,11 +83,11 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 				<div class="col-md-12 well text-center">
 					<div  class="form-group form-inline">
 						<label for="startdate">Start Date *</label>
-						<input class="form-control" type="date" name="startdate" id="startdate" required />
+						<input class="form-control" type="text" name="startdate" id="startdate" required />
 						<label for="enddate">End Date *</label>
-						<input class="form-control" type="date" name="enddate" id="enddate" required />
+						<input class="form-control" type="text" name="enddate" id="enddate" required />
 						<label for="deadline">Application Deadline *</label>
-						<input class="form-control" type="date" name="deadline" id="deadline" required />
+						<input class="form-control" type="text" name="deadline" id="deadline" required />
 					</div>
 					<div  class="form-group"><label for="hoursPerWeek">Hours/Week (if known)</label><input class="form-control-justin" type="text" id="hoursPerWeek" name="hoursPerWeek" size="10" maxlength="2" pattern="[0-9]{0,2}" title="Hours/Week: must be numeric!" placeholder="Amount of hours the opportunity requires" value="<?php if(isset($_POST['hoursPerWeek'])){echo $_POST['hoursPerWeek'];}?>"/></div>
 					<div  class="form-group form-inline">
@@ -121,16 +130,28 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 			<div class="col-xs-12">
 				<div class="col-md-12 well text-center">
 					<div  class="form-group">
-						<label for="gpareq">GPA Requirement </label>
-						<input class="form-control-justin" type="text" id="gpareq" name="gpareq" size="10" maxlength="5" pattern="[0-9.]{1,4}" title="GPA must be numeric value with up to two digits after decimal" placeholder="Enter GPA Requirement" value="<?php if(isset($_POST['gpareq'])){echo $_POST['gpareq'];}?>" />
+						<label for="gpareq">Minimum GPA Required </label>
+						<select class="form-control-justin" id="gpareq" name="gpareq">
+							<option value="0">Undefined</option>
+							<option value="2.0+">2.0+</option>
+							<option value="2.5+">2.5+</option>
+							<option value="3.0+">3.0+</option>
+							<option value="3.5+">3.5+</option>
+							<option value="4.0+">4.0+</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label for="gradereq">Grade Level Requirement </label>
+						<label for="gradereq">Minimum Grade Required </label>
 						<select class="form-control-justin" id="gradereq" name="gradereq">
 							<option value="0">Undefined</option>
-							<option value="High School">High School</option>
-							<option value="College">College</option>
-							<option value="Graduate">Graduate</option>
+							<option value="HS9">High School Grade 9</option>
+							<option value="HS10">High School Grade 10</option>
+							<option value="HS11">High School Grade 11</option>
+							<option value="HS12">High School Grade 12</option>
+							<option value="Freshman">Undergraduate Freshman</option>
+							<option value="Sophomore">Undergraduate Sophomore</option>
+							<option value="Junior">Undergraduate Junior</option>
+							<option value="Senior">Undergraduate Senior</option>
 							<!--<option value="4">Senior</option>-->
 							</select>
 					</div>
@@ -210,16 +231,23 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 				<div class="col-md-12 well text-center">
 					<div class="form-group">
 						<label for="howToApply">How do Students Apply? *</label>
-						<select class="form-control-justin" id="howToApply" name="howToApply">
+						<select class="form-control-justin" id="howToApply" name="howToApply" >
 							<option value="1">Direct students to your own personal page</option>
 							<option value="2">Students apply through your email</option>
 						</select>
+					<div id="personalPageDiv">
+						<label>Please input your personal URL.</label>
+						<input class="form-control" id="personalPage" name="personalPage" />
+					</div>
+					<div id="emailPageDiv">
+						<label>Please input the E-mail students should contact.</label>
+						<input class="form-control" id="emailPageDiv" name="emailPageDiv" />
 					</div>
 					<div  class="checkbox">
 						<label><input class="" type="checkbox" id="paid" name="paid" value="1" />Check if this is a paid opportunity</label>
 					</div>
 					<div  class="">
-						<input class="btn btn-default" id="submit-button" name="op" value="Create!" type="submit">
+						<input class="btn btn-default" id="submit-button" name="op" value="Create!" type="submit" onclick="return validate()">
 					</div>
 				</div>
 			</div>
@@ -310,6 +338,31 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 </style>
 
 <script type="text/javascript">
+function validate() {
+var error = false;
+if(document.getElementById("title").value == "") {
+	error = true;
+}
+if(error){
+	alert('no');
+	return false;
+}
+return true;
+}
+	$("#startdate").datepicker();
+	$("#enddate").datepicker();
+	$("#deadline").datepicker();
+	$("#startdate").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+	$("#enddate").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+	$("#deadline").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+	$("personalPageDiv").style.display = "none";
+	$("emailPageDiv").style.display = "none";
+	/*$function onApplySelect(selectedIndex) {
+		if (selectedIndex == 1) {
+			$("personalPageDiv").style.display = "block";
+			$("emailPageDiv").style.display = "none";
+		}
+	}*/
     function resetActive(event, percent, step) {
         $(".progress-bar").css("width", percent + "%").attr("aria-valuenow", percent);
         $(".progress-completed").text(percent + "%");

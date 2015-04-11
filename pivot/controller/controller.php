@@ -120,7 +120,7 @@
 				}elseif(isset($route[2]) && $route[2] === 'import'){
 					$pageTitle = 'Import Opportunities';
 					$imported;
-					if(count($_POST) > 0){
+					if(count($_FILES) > 0){
 						$imported = $this->model->ImportOpportunity();
 					}
 					

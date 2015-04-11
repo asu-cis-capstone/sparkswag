@@ -93,9 +93,19 @@ require_once("template/navigationbar.php");
 	<label for="password">Confirm Password *</label>
 	 <input class="form-control" type="password" id="confirmpassword" name="password" 
 	 value="" size="60" maxlength="60" required title=""  
-	 placeholder="Password Confirmation">				<div class="col-md-10"></div>		<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-3'); focusthis(2); buttonpress(2);">NEXT</div>
-	 
+	 placeholder="Password Confirmation">	
+
 	</div>
+
+	<div class="form-group" >
+	
+	<label for="email">Email *</label>
+	 <input class="form-control" type="email" id="email" name="email" 
+	 value="" size="60" maxlength="60" required title=""  
+	 placeholder="Email">				
+	<div class="col-md-10"></div>		
+	<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 60, 'step-3'); focusthis(2); buttonpress(2);">NEXT</div>
+	</div>	
             </div>
         </div>
     </div>
@@ -124,7 +134,7 @@ require_once("template/navigationbar.php");
 	
 
 	<label for="birthday">Birthday *</label>
-	<input type="date" id="birthday" name="birthday" class="form-control"  required title="" >
+	<input type="text" id="birthday" name="birthday" class="form-control"  required title="" >
 					<div class="col-md-10"></div>			<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 80, 'step-4'); focusthis(3); buttonpress(3);">NEXT</div>
 	</div>
             </div>
@@ -152,7 +162,7 @@ require_once("template/navigationbar.php");
 
 	</div>
     
-    	 <div class="form-group" id="studentDiv" >
+	<div class="form-group" id="studentDiv" name="studentDiv">
 	 
 	  
 		<label for="gpa">GPA *</label>
@@ -161,17 +171,39 @@ require_once("template/navigationbar.php");
 		<label for="gradeLevel">Grade Level *</label>
 		<!--<input class="form-control" type="text" id="gradeLevel" name="gradeLevel" value="" size="60" maxlength="255" placeholder="Grade Level">-->
 		<select name="gradeLevel" class="form-control">
-			<option value="highschool">High School</option>
-			<option value="communitycollege">Community College</option>
-			<option value="undergraduate">Undergraduate</option>
-			<option value="graduate">graduate</option>
+			<option value="HS9">High School Grade 9</option>
+			<option value="HS9">High School Grade 10</option>
+			<option value="HS9">High School Grade 11</option>
+			<option value="HS9">High School Grade 12</option>
+			<option value="Freshman">Undergraduate Freshman</option>
+			<option value="Sophomore">Undergraduate Sophomore</option>
+			<option value="Junior">Undergraduate Junior</option>
+			<option value="Senior">Undergraduate Senior</option>
 		</select>
 		<br >
 		
 		<label for="major">Major *</label>
 		<input class="form-control" type="text" id="major" name="major" value="" size="60" maxlength="255" placeholder="Major" ><br > 
-		<div class="col-md-10"></div>		<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-5'); focusthis(4); buttonpress(4);">NEXT</div>
 	 </div>
+	<div class="form-group" id="staffDiv" style="display:none;">
+ 
+  
+		<label for="department">Department *</label>
+		<input class="form-control" type="text" id="department" name="department" value="" size="60" maxlength="255"   title="" placeholder="Department"><br >
+		
+		<label for="title">Title</label>
+		<input class="form-control" type="text" id="title" name="title" value="" size="60" maxlength="255" 
+		  placeholder="Title"><br >
+		
+		<label for="professionaltype">I am a *</label>
+		<select name="professionaltype" >
+			<option value="universityresearcher">University Researcher</option>
+			<option value="industryprofessional">Industry Professional</option>
+		</select>
+	
+	
+	 </div>
+	<div class="col-md-10"></div>		<div class="btn btn-default col-md-2 padding" onclick="javascript: resetActive(event, 100, 'step-5'); focusthis(4); buttonpress(4);">NEXT</div>
             </div>
         </div>
     </div>
@@ -289,6 +321,7 @@ require_once("template/navigationbar.php");
 </style>
 
 <script type="text/javascript">
+	$("#studentDiv").display("none");
     function resetActive(event, percent, step) {
         $(".progress-bar").css("width", percent + "%").attr("aria-valuenow", percent);
         $(".progress-completed").text(percent + "%");
@@ -366,6 +399,15 @@ require_once("template/navigationbar.php");
 			$("#div4").removeClass("activestep");
 			$("#div5").addClass("activestep");   
 		}
+	}
+	function showResearcherForm() {
+	document.getElementById("studentDiv").style.display = "none";
+	document.getElementById("staffDiv").style.display = "block";
+	//document.getElementById("studentDiv").style.display = "none";
+	}
+	function showStudentForm() {
+	document.getElementById("staffDiv").style.display = "none";
+	document.getElementById("studentDiv").style.display = "block";
 	}
 </script>
 
@@ -494,6 +536,8 @@ require_once("template/navigationbar.php");
         var id = "#" + step;
         $(id).addClass("activeStepInfo");
     }
+	//$("#birthday").datepicker();
+	$("#birthday").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
 </script>
 
 <!-- Steps Progress and Details - END -->

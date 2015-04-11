@@ -61,8 +61,8 @@ class Model {
 				':major' => $_POST['major']
 			);
 			$studentTable = $database->InsertStudent($paramsStudentArray);
-			d($studentTable);
-			d($paramsStudentArray);
+			//d($studentTable);
+			//d($paramsStudentArray);
 			
 		}
 
@@ -106,14 +106,11 @@ class Model {
 			':positionAvailable'  => $_POST['positions'], 
 			':detailedDescription'  => $_POST['description'], 
 			':experienceType' => $_POST['experienceType'],
-			//':category'  => "test", 
-			//':discipline'  => $_POST['discipline'], 
 			':startDate'  => $_POST['startdate'], 
 			':endDate'  => $_POST['enddate'], 
 			':deadline'  => $_POST['deadline'], 
 			':institution'  => $_POST['institution'], 
 			':institutionType'  => $_POST['institutiontype'], 
-			//':logo'  => $fileName, 
 			':url'  => $_POST['url'], 
 			':locationCity'  => $_POST['locationCity'], 
 			':locationState'  => $_POST['locationState'], 
@@ -149,34 +146,34 @@ class Model {
 		$result = $database->ShowRecentListings();
 		return $result;
 	}
-	public function uploadPhoto($inputName){
+	public function uploadDocument($inputName){
 		//<input type="file" name="$inputName">
 		
 		$doUpload = true;
-		$saveToDir = 'upimage/';
+		$saveToDir = 'docs/';
 		$saveToFile = $saveToDir . basename($_FILES[$inputName]["name"]);
 		//d($saveToFile);
 		$typeofFile = strtolower(pathinfo($saveToFile)['extension']);
 		//d($typeofFile);
-		$imageCheck = getimagesize($_FILES[$inputName]["tmp_name"]);
+		//$imageCheck = getimagesize($_FILES[$inputName]["tmp_name"]);
 		//d($imageCheck);
 		$saveToFile = $saveToDir . $this->RandomNumbers() .'.'. $typeofFile;
-		if($imageCheck === false){
-			$doUpload = false;
-		}
+		//if($imageCheck === false){
+		//	$doUpload = false;
+		//}
 		if(file_exists($saveToFile)){
 			//file exists and this is a bad thing!
-			return $this->uploadPhoto($inputName);
+			return $this->uploadDocument($inputName);
 			
 		}
 		//d($_FILES[$inputName]["size"]);
 		if($_FILES[$inputName]["size"] > 3000000){
 			$doUpload = false;
 		}
-		if( $typeofFile === 'jpg' ||
-			$typeofFile === 'jpeg' ||
-			$typeofFile === 'png' ||
-			$typeofFile === 'gif' 
+		if( $typeofFile === 'doc' ||
+			$typeofFile === 'docx' ||
+			$typeofFile === 'pdf' ||
+			$typeofFile === 'txt' 
 		){
 			//do nothing
 		}else{
@@ -328,8 +325,8 @@ class Model {
 			$params[':gradeLevel'] = $gradeLevel;
 		}
 		$query .= ';';
-		d($query);
-		d($params);
+		//d($query);
+		//d($params);
 		global $database;
 		$result = $database->ShowSearchListings($query, $params);
 		return $result;
@@ -342,8 +339,8 @@ class Model {
 		if(empty($_POST['title']) || strlen($_POST['title']) < 6 || strlen($_POST['title']) > 100) {
 			$error = "Name is required and must be between 6-100 characters.";
 		}
-		if(empty($_POST['description']) || strlen($_POST['description']) < 250) {
-			$error = $error . "\\nDescription is required and must be atleast 250 characters.";
+		if(empty($_POST['description']) || strlen($_POST['description']) < 10) {
+			$error = $error . "\\nDescription is required and must be atleast 10 characters.";
 		}
 		if(strlen($_POST['keywords']) > 150) {
 			$error = $error . "\\nKeywords can only contain 150 characters.";
@@ -351,6 +348,7 @@ class Model {
 		if(strlen($_POST['positions'] > 20)) {
 			$error = $error . "\\nPositions Available cannot exceed 20 characters.";
 		}
+		/*
 		if(!empty($_POST['startdate']) && !empty($_POST['enddate']) && !empty($_POST['deadline'])) {
 			if($this->validateDate($_POST['startdate']) && $this->validateDate($_POST['startdate']) && $this->validateDate($_POST['startdate'])) {
 			}
@@ -360,7 +358,7 @@ class Model {
 		}
 		else {
 			$error = $error . "\\nStart date, end date, and application deadline is required.";
-		}
+		}*/
 		if(!is_int((int)$_POST['hoursPerWeek']) || strlen($_POST['hoursPerWeek']) > 2) {
 			$error = $error . "\\nHours/Week must be an integer and can only be a maximum of 2 digits.";
 		}
@@ -396,8 +394,9 @@ class Model {
 		}
 		return $error;	
 	}
+	/*
 	public function validateDate($testDate) {
-		$testDate = explode('-', $testDate);
+		$testDate = explode('/', $testDate);
 		$month = $testDate[1];
 		$day = $testDate[2];
 		$year = $testDate[0];
@@ -412,20 +411,20 @@ class Model {
 		else {
 			return false;
 		}
-	}
+	}*/
 	public function UpdateUserField(){
 		global $database;
-		d($_POST);
+		//d($_POST);
 		$keys = array_keys($_POST);
-		d($keys[0]);
-		d($_SESSION);
+		//d($keys[0]);
+		//d($_SESSION);
 		
 		$paramsArray = [];
 		$paramsArray[':value'] = $_POST[$keys[0]];
 		$paramsArray[':UserNum'] = $_SESSION['userInfo']['UserNum'];
-		d($paramsArray);
+		//d($paramsArray);
 		$result = $database->UpdateUserInfo($paramsArray, $keys[0]);
-		d($result);
+		//d($result);
 		if($result === true){
 			$_SESSION['userInfo'][$keys[0]] = $_POST[$keys[0]];
 		}
@@ -462,8 +461,58 @@ class Model {
 	}
 	
 	public function ImportOpportunity(){
+		global $database;
+		//ini_set("auto_detect_line_endings", true);
+		$csv = $_FILES['importFile']['tmp_name'];
+		$fileHandle = fopen($csv, "r");
+		d($fileHandle);
+		d($fileHandle);
+		d($fileHandle);
+		d($fileHandle);
 		
+		$rows = [];// = fgetcsv($fileHandle, 0, ",");
+		while(!feof($fileHandle)) {
+			$rows[] = fgetcsv($fileHandle);
+		}
+		d($rows);
+		$failedInsert = [];
+		foreach ($rows as $rowNum => $row) {
+			if($rowNum < 3){ continue; }
+
+			$paramsArray = array(
+			':ListingNum'  => null, 
+			':StaffNum'  => $_SESSION['userInfo']['UserNum'],
+			':title'  => $row[0], 
+			':positionAvailable'  => $row[3], 
+			':detailedDescription'  => $row[1], 
+			':experienceType' => $row[10],
+			':startDate'  => $row[4], 
+			':endDate'  => $row[5], 
+			':deadline'  => $row[7], 
+			':institution'  => $row[8], 
+			':institutionType'  => $row[9], 
+			':url'  => $row[11], 
+			':locationCity'  => $row[12], 
+			':locationState'  => $row[13], 
+			':gpaRequire'  => $row[16], 
+			':gradeRequire'  => $row[14], 
+			':paid'  => $row[17],
+			':hoursPerWeek' => $row[6],
+			':howToApply' => $row[18],
+			':additionalDoc' => $row[19],
+			':keywords' => $row[2],
+			':specialReq' => $row[15]
+		 	);
 		
+			//d($paramsArray);
+			$result = $database->InsertOpportunity($paramsArray);
+			d($result);
+
+			if($result === false){
+				$failedInsert[] = $row;
+			}
+			d($failedInsert);
+		}
 	}
 }
 ?>

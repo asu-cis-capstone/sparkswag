@@ -6607,4 +6607,13 @@ button.close {
 	padding:		10px;
 	margin-bottom:	25px;
 }
+#rheader
+{
+	text-align:		center;
+}
+#rtitle{
+	font-size:		200%;
+	font-weight:	bold;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

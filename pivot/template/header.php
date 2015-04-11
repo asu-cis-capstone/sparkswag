@@ -10,9 +10,12 @@
     <meta name="author" content="">
 
     <title><?php echo $pageTitle; ?></title>
-	<!-- Javascript -->
+	<!-- Javascript & Jquery -->
 	<script type="text/javascript" src="js/createuser.js"></script>
-    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="js/jquery.maskedinput.js"></script>
 	<!-- Google Font Roboto -->
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 

@@ -6,12 +6,13 @@ require_once("template/navigationbar.php");
 
 
 <div id="contents" class="container pull-down">
-	<?php d($_POST);?>
 	<form method="post" action="<?php echo $thisSite;?>opportunities" class="form-horizontal" id="searchform" accept-charset="UTF-8" role="form">
-		<div class="form-group">
-			<label for="text">Search text</label>
+		<div id="mainsearch" class="form-group">
+			<label for="text">Key Words</label>
 			<input type="text" id="text"  class="form-control" name="searchText">
-
+			<a id="addsearchbtn" href="javascript:addsearchjs();">(+) Advanced search</a>
+		</div>
+		<div id="addsearch" class="form-group hidden">
 			<label for="state">State</label>
 			<select id="state"  class="form-control" name="state">
 				<option value="">Select One</option>
@@ -77,8 +78,10 @@ require_once("template/navigationbar.php");
 				<option value="High School">High School</option>
 				<option value="College">College</option>
 				<option value="Graduate">Graduate</option>
-			</select>			
-			<button type="submit" name="submit" class="btn btn-default">Search</button>
+			</select>
+		</div>
+		<div class="form-group">
+			<button type="submit" name="submit" class="btn btn-default padding">Search</button>
 		</div>
 	</form>
 	
@@ -99,7 +102,7 @@ require_once("template/navigationbar.php");
 		<!--<div class="col-md-2" style="margin-bottom: 10px; border: 2px solid #555555; text-align: center; border-radius: 10px;">STAR BUTTON
 		</div>-->
 		<div class="col-md-10 hidden-xs hidden-s">Description: '.$listing['detailedDescription'].'</div>
-		<a href="'.$listing['url'].'"><button class="col-md-2 btn btn-default">APPLY BUTTON</button></a>
+		<a href="'.$listing['url'].'"><button class="col-md-2 btn btn-default">Apply</button></a>
 		
 		</div>';
 	}?>
@@ -108,7 +111,21 @@ require_once("template/navigationbar.php");
 	
 	
 </div>
-
+<script type="text/javascript">
+	function addsearchjs()
+	{
+		if ($('#addsearchbtn').text() == '(+) Advanced search')
+		{
+			$('#addsearchbtn').text('(-) Advanced search');
+			$("#addsearch").removeClass("hidden");
+		}
+		else
+		{
+			$('#addsearchbtn').text('(+) Advanced search');
+			$("#addsearch").addClass("hidden");
+		}
+	}
+</script>
 
 <?php 
 require_once("template/footer.php");
