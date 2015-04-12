@@ -39,9 +39,9 @@ https://youtu.be/IKJ9-__-5_o
 | Member                       | Affiliation             | Role             |
 |:-----------------------------|:------------------------|:-----------------|
 | Kathryn Scheckel             | Chief Executive Officer | Product Owner    |
+| Walter Harvey                | Capstone Team Member    | Development Team |
 | Jamie Ell                    | Capstone Team Member    | Scrum Master     |
 | Matinee Cheevasittirungruang | Capstone Team Member    | Development Team |
-| Walter Harvey                | Capstone Team Member    | Development Team |
 | Justin Giddens               | Capstone Team Member    | Development Team |
 | Bill Tan                     | Capstone Team Member    | Development Team |
 
