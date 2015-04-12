@@ -1,7 +1,7 @@
 <?php
 
 //Model.php handles all business logic
-//Makes available all variables view needs to display.
+//Makes available all variables views need to display.
 //Handles DB insert, select.....
 
 
@@ -13,7 +13,7 @@ class Model {
 
 	public function CreateUser(){
 		global $database;
-		//d($_POST);
+		 
 		//$fileName = $this->uploadPhoto('profilepic');
 		$username = array(
 			':username' => $_POST['username']
@@ -66,9 +66,8 @@ class Model {
 			
 		}
 
-		if($didItWork === true){
-			return 'Account Created successfully';
-		}
+		return ($didItWork === true) ?  '' : 'Database insertion failed.';
+		
 	}
 	public function UserLogIn(){
 		global $database;
@@ -337,16 +336,16 @@ class Model {
 	public function validateOpportunity(){
 		$error = "";
 		if(empty($_POST['title']) || strlen($_POST['title']) < 6 || strlen($_POST['title']) > 100) {
-			$error = "Name is required and must be between 6-100 characters.";
+			$error .= "Name is required and must be between 6-100 characters.";
 		}
 		if(empty($_POST['description']) || strlen($_POST['description']) < 10) {
-			$error = $error . "\\nDescription is required and must be atleast 10 characters.";
+			$error .= $error . "\\nDescription is required and must be atleast 10 characters.";
 		}
 		if(strlen($_POST['keywords']) > 150) {
-			$error = $error . "\\nKeywords can only contain 150 characters.";
+			$error .= $error . "\\nKeywords can only contain 150 characters.";
 		}
 		if(strlen($_POST['positions'] > 20)) {
-			$error = $error . "\\nPositions Available cannot exceed 20 characters.";
+			$error .= $error . "\\nPositions Available cannot exceed 20 characters.";
 		}
 		/*
 		if(!empty($_POST['startdate']) && !empty($_POST['enddate']) && !empty($_POST['deadline'])) {
@@ -360,37 +359,37 @@ class Model {
 			$error = $error . "\\nStart date, end date, and application deadline is required.";
 		}*/
 		if(!is_int((int)$_POST['hoursPerWeek']) || strlen($_POST['hoursPerWeek']) > 2) {
-			$error = $error . "\\nHours/Week must be an integer and can only be a maximum of 2 digits.";
+			$error .= $error . "\\nHours/Week must be an integer and can only be a maximum of 2 digits.";
 		}
 		if(strlen($_POST['institution']) > 50) {
-			$error = $error . "\\nInstitution cannot exceed 50 characters.";
+			$error .= $error . "\\nInstitution cannot exceed 50 characters.";
 		}
 		if(strlen($_POST['institutiontype']) > 50) {
-			$error = $error . "\\nInstitution type cannot exceed 50 characters.";
+			$error .= $error . "\\nInstitution type cannot exceed 50 characters.";
 		}
 		if(strlen($_POST['experienceType']) > 50) {
-			$error = $error . "\\nExperience type cannot exceed 50 characters.";
+			$error .= $error . "\\nExperience type cannot exceed 50 characters.";
 		}
 		if(strlen($_POST['url']) > 50) {
-			$error = $error . "\\nThe URL cannot exceed 50 characters.";
+			$error .= $error . "\\nThe URL cannot exceed 50 characters.";
 		}
 		if(empty($_POST['locationCity']) || strlen($_POST['locationCity']) < 2 || strlen($_POST['locationCity']) > 50) {
-			$error = $error . "\\nCity is required and must be between 2-50 characters.";
+			$error .= $error . "\\nCity is required and must be between 2-50 characters.";
 		}
 		if(empty($_POST['locationState']) || strlen($_POST['locationState']) < 2 || strlen($_POST['locationState']) > 15) {
-			$error = $error . "\\nState is required and must be between 2-15 characters.";
+			$error .= $error . "\\nState is required and must be between 2-15 characters.";
 		}
 		if(strlen($_POST['gradereq']) > 10){
-			$error = $error . "\\nGrade Level Requirements field cannot exceed 10 characters.";
+			$error .= $error . "\\nGrade Level Requirements field cannot exceed 10 characters.";
 		}
 		if(strlen($_POST['specialReq']) > 50) {
-			$error = $error . "\\nSpecial Requirements field cannot exceed 50 characters.";
+			$error .= $error . "\\nSpecial Requirements field cannot exceed 50 characters.";
 		}
 		if(strlen($_POST['gpareq']) > 10) {
-			$error = $error . "\\nGPA Requirement field cannot exceed 10 characters.";
+			$error .= $error . "\\nGPA Requirement field cannot exceed 10 characters.";
 		}
 		if(empty($_POST['howToApply'])) {
-			$error = $error . "\\nHow to apply field is required.";
+			$error .= $error . "\\nHow to apply field is required.";
 		}
 		return $error;	
 	}
@@ -513,6 +512,14 @@ class Model {
 			}
 			d($failedInsert);
 		}
+	}
+	public function DeleteOpportunity($listID){
+		global $database, $route;
+		$paramsArray = [];
+		$paramsArray[':ListingNum'] = $route[4];
+		$result = $database->DeleteOpportunity($paramsArray);
+		return $result;
+		
 	}
 }
 ?>

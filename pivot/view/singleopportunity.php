@@ -62,12 +62,10 @@ require_once("template/navigationbar.php");
 		break;
 	} ?></p>
 	<p>GPA Required: <?php echo $listingRow['gpaRequire']; ?></p>
-	<p>Paid Position: <?php if ($listingRow['paid'] === 1){echo 'Yes';} else{echo 'No';} ?></p>
+	<p>Paid Position: <?php if ($listingRow['paid'] === 'Paid'){echo 'Yes';} else{echo 'No';} ?></p>
 		
-	
-	<form action="<?php echo $thisSite;?>apply" method="post" role="form">
-		<button type="submit" class="btn btn-default">Apply!</button>
-	</form>
+	<?php //d($listingRow); ?>
+	<a class="btn btn-default" href="<?php echo $listingRow['url']?>">Apply</a>
 </div>
 
 

@@ -41,7 +41,16 @@ require_once("template/navigationbar.php");
                 <p class="form">Agree & Submit</p>
             </div>
         </div>
-    </div>
+
+
+	<?php if(isset ($errorMessage)  && strlen($errorMessage) > 0){   ?>
+	<div class="container row error">
+		<p style="text-align:center;"><?php echo $errorMessage; ?>
+		</p>
+	</div>
+			
+	<?php }?>
+
     <div class="row setup-content step activeStepInfo" id="step-1">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">	<form class="form-horizontal" action="<?php echo $thisSite; ?>register" method="post" id="createaccount" accept-charset="UTF-8" role="form">
@@ -212,7 +221,7 @@ require_once("template/navigationbar.php");
             <div class="col-md-12 well text-center">
 	<div class="form-group" id="" >
 		<label for="agree">I agree to the 
-			<a href="<?php echo $thisSite; ?>TermsAndConditions.txt">terms and conditions</a>
+			<a href="http://sparkopenresearch.com/terms.php">terms and conditions</a>
 		</label>
 		<input class="checkbox-inline" type="checkbox" id="agree" name="agree" value="1" required title="You must agree to the terms and conditions of the site. " >
 		

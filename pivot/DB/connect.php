@@ -27,6 +27,7 @@ class DB{
 	private $updateUserInfoSQL = 'update User set %%column%% = :value where UserNum = :UserNum';
 	private $queryPendingApproval = 'SELECT * FROM Listing WHERE approved = 0';
 	private $approveOpportunitySQL = 'UPDATE  Listing SET  approved =  1 WHERE  ListingNum = :ListingNum;';
+	private $deleteOppSQL = 'delete from Listing where ListingNum = :ListingNum; ';	
 	
 	//DB object constructor
 	public function __construct (){
@@ -192,6 +193,12 @@ class DB{
 			return false;
 		}
 		
+	}
+	public function DeleteOpportunity($params){
+		$statement = $this->connection->prepare($this->deleteOppSQL);
+               	$passOrFail = $statement->execute($params);
+                return $passOrFail;
+	
 	}
 }
 ?>
