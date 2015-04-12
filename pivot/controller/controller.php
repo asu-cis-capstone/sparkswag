@@ -51,8 +51,15 @@
 				$pageTitle = 'Register User Account';
 				if(count($_POST) > 0)
 				{	
-					$successMsg = $this->model->CreateUser();
-					require 'view/createusersuccess.php';
+					$errorMessage = "";
+					$errorMessage = $this->model->CreateUser();
+
+					if($errorMessage == "" ){
+						require 'view/createusersuccess.php';
+					}else{
+						d($errorMessage);
+						require 'view/createuser.php';
+					}
 				}else{
 					require 'view/createuser.php';
 				}
@@ -125,7 +132,17 @@
 					}
 					
 					require 'view/adminimport.php';
-				}else{
+				
+				}elseif(isset($route[2]) && $route[2] === 'delete' &&
+						isset($route[3]) && $route[3] ==='opportunity'){
+
+					$pageTitle = 'Deletion - '. $route[3];
+					$errorMessage = $this->model->DeleteOpportunity($route[4]);
+					
+					require 'view/admindeletion.php';
+					
+				}
+				else{
 					$pageTitle = 'Administration Panel';
 					require 'view/admin.php';
 				}
