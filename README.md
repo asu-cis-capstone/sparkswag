@@ -75,5 +75,5 @@ https://youtu.be/IKJ9-__-5_o
 * Added step form process via jQuery and CSS
 * Enabled My Account Profile editions via JavaScript
 
-** Release Version 0.5 **
+** Release Version 0.6 **
 * Added administration functionality
