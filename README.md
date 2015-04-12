@@ -15,45 +15,33 @@ The purpose of this project is to connect students with researchers in their fie
 
 ##System Requirements
 
-Spark Open Research Repository is built with Drupal 7.34 which requires:
-+ A web server running Apache, Nginx, or Microsoft IIS (We're using Apache)
-+ A database utilizing MySQL 4.1+ or PostgreSQL 7.1
-+ PHP 5.2+ (We're using PHP 5.4)
+Spark Open Research Repository requires a working web server, php, mysql database setup.
 
 ##v0.4 Spark Open Research Video
 https://youtu.be/IKJ9-__-5_o
 
 ##How to install
 
-* Install Apache, PHP, and MYSQL.
-<br>```$ apt-get install lamp-server php5-gd```
-
-* Edit php.ini to turn on or off errors.
-<br>```$ nano /etc/php5/apache2/php.ini```
-
-* Clone the repo into your webroot.
+* Clone the repo onto your server.
 <br>```$ git clone https://github.com/asu-cis-capstone/sparkswag.git```
-
-* Give apache permission to read / write files.
-<br>```$ chown -R ubuntu:www-data sparkswag```
-<br>```$ chmod -R 770 sparkswag ```
+<br>```set ./pivot/ as webroot ```
 
 * Create database and user then grant access.
 <br>```$ mysql -u root -p```
-<br>```mysql> create database drupal;```
-<br>```mysql> create user drupaluser identified by '[REDACTED]';```
-<br>```mysql> grant all on drupal.* to drupaluser;```
+<br>```mysql> create database [DB_NAME]```
+<br>```mysql> create user [DB_USER] identified by '[REDACTED]';```
+<br>```mysql> grant all on [DB_NAME].* to [DB_USER];```
 
 * Import SQL into database.
-<br>```$ mysql -u root -p < sql/drupaldump.sql```
+<br>```$ mysql -u root -p < sql/createTables.sql```
 
 ##Contributors
 | Member                       | Affiliation             | Role             |
 |:-----------------------------|:------------------------|:-----------------|
 | Kathryn Scheckel             | Chief Executive Officer | Product Owner    |
+| Walter Harvey                | Capstone Team Member    | Development Team |
 | Jamie Ell                    | Capstone Team Member    | Scrum Master     |
 | Matinee Cheevasittirungruang | Capstone Team Member    | Development Team |
-| Walter Harvey                | Capstone Team Member    | Development Team |
 | Justin Giddens               | Capstone Team Member    | Development Team |
 | Bill Tan                     | Capstone Team Member    | Development Team |
 
@@ -86,3 +74,6 @@ https://youtu.be/IKJ9-__-5_o
 * Created backend validation for forms
 * Added step form process via jQuery and CSS
 * Enabled My Account Profile editions via JavaScript
+
+** Release Version 0.6 **
+* Added administration functionality
