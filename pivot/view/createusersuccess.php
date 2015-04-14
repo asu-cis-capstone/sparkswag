@@ -25,7 +25,7 @@ require_once("template/navigationbar.php");
 				}
 			?>
 		</p>
-		<p> Your information has been added to our database. </p>
+		<p>Check your email for an account verification.</p>
 		<p class="bold">
 		Click <a href="<?php echo $thisSite; ?>login">here</a> to login</p>
 	</div>

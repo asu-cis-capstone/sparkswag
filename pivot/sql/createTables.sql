@@ -68,6 +68,13 @@ CREATE TABLE IF NOT EXISTS `Student` (
   PRIMARY KEY (`UserNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `Verify`;
+CREATE TABLE IF NOT EXISTS `Verify` (
+  `UserNum` int(10) unsigned NOT NULL,
+  `verification` int(10) NOT NULL,
+  PRIMARY KEY (`UserNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
   `UserNum` int(10) unsigned NOT NULL AUTO_INCREMENT,

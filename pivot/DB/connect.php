@@ -16,6 +16,7 @@ class DB{
 	
 	private $insertStaffSQL = 'INSERT INTO Staff (UserNum, department, title, professionalType) VALUES (:UserNum, :department, :title, :professionalType);';
 	private $insertStudentSQL = 'INSERT INTO Student (UserNum, gpa, gradeLevel, major) VALUES(:UserNum, :gpa, :gradeLevel, :major);';
+	private $insertVerifySQL = 'insert into Verify (UserNum, verification) values (:UserNum, :verification);';
 	private $queryUserSQL = 'select * from User where username = :username;';
 	private $findUserNum = 'select UserNum from User where username = :username;';
 	private $queryOpportunitySQL = 'select * from Listing where ListingNum = :ListingNum;';
@@ -199,6 +200,12 @@ class DB{
                	$passOrFail = $statement->execute($params);
                 return $passOrFail;
 	
+	}
+
+	public function InsertVerify($params){
+		$statement = $this->connection->prepare($this->insertVerifySQL);
+                $passOrFail = $statement->execute($params);
+                return $passOrFail;
 	}
 }
 ?>

@@ -40,9 +40,10 @@ class Model {
 		$didItWork = $database->InsertUser($paramsArray);
 		//d($didItWork);
 		//d($_POST['role']);
+		$foundUserNum = $database->findUserNum($username);
 		if($_POST['role'] === 'professional'){
 			$paramsStaffArray = array(
-				':UserNum' => $database->findUserNum($username),
+				':UserNum' => $foundUserNum,
 				':department' => $_POST['department'],
 				':title' => $_POST['title'],
 				':professionalType' => $_POST['professionaltype']
@@ -66,9 +67,40 @@ class Model {
 			
 		}
 
-		return ($didItWork === true) ?  '' : 'Database insertion failed.';
+		if ($didItWork === true) {  
+			$number = $this->RandomNumbers(10);
+			$params = [];
+			$params[':UserNum'] = $foundUserNum;
+			$params[':verification'] = $number;
+			$database->InsertVerify($params);
+			global $thisSite;
+			$link = $thisSite . 'verify/?id=' . $foundUserNum . '&v=' .$number;
+			d($_SESSION);
+			d($_SESSION);
+			d($_SESSION);
+			d($link);
+			$msg = '<html><head>Sparklr account creation <title>
+</title></head><body>
+Your account has been created. <br> <a href="'.$link.'">Please click the link to verify your account.</a>
+</body></html>';			
+			
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
+
+			mail(
+				$_POST['email'], 
+				'Sparklr account creation',
+				$msg,
+				'From: DoNotReply <donotreply@sparkopenresearch.com>',
+				$headers
+				);
+			return '';
+		}
+		else{ return 'Database insertion failed.';}
 		
 	}
+	
 	public function UserLogIn(){
 		global $database;
 		$errorMessage = '';
