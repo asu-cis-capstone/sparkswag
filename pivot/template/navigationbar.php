@@ -9,7 +9,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <span class="olive"><i class="fa fa-play-circle"></i></span>  <span class="light">Sparklr</span> Research Database
+                    <span class="olive"><i class="fa fa-play-circle"></i></span>  <span class="light">Sparklr</span> Opportunity Database
                 </a>
             </div>
 
