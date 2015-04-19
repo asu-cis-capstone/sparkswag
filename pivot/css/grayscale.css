@@ -382,19 +382,20 @@ a:focus {
 }
 
 .btn {
-    border-radius: 0;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
+	border-radius: 5px;
 }
 
 .btn-default {
     border: 1px solid #42dca3;
     color: #42dca3;
     background-color: transparent;
+	border-radius: 5px;
 }
 
 .btn-max {

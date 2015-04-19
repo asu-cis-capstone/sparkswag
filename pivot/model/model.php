@@ -20,17 +20,18 @@ class Model {
 		);
 		$paramsArray = array(
 			':UserNum'  => null,
-			':fname' => $_POST['firstname'],
-			':lname' => $_POST['lastname'],
+			':fname' => (isset($_POST['firstname'])) ? $_POST['firstname'] : '',
+			':lname' => (isset($_POST['lastname'])) ? $_POST['lastname'] : '',
 			':mname' => null,
 			':address' => null,
 			':city' => null,
 			':state' => null,
 			':zip' => null,
-			':institution' => $_POST['institution'],
-			':fieldOfStudy' => $_POST['fieldofstudy'],
+			':institution' => (isset($_POST['institution'])) ? $_POST['institution'] 
+: '',
+			':fieldOfStudy' => (isset($_POST['fieldofstudy'])) ? $_POST['fieldofstudy'] : '',
 			':email' => $_POST['email'],
-			':DOB' => $_POST['birthday'],
+			':DOB' => (isset($_POST['birthday'])) ? $_POST['birthday'] : '',
 			':photo' => null,
 			':role' => $_POST['role'],
 			':username' => $_POST['username'],
@@ -44,9 +45,11 @@ class Model {
 		if($_POST['role'] === 'professional'){
 			$paramsStaffArray = array(
 				':UserNum' => $foundUserNum,
-				':department' => $_POST['department'],
-				':title' => $_POST['title'],
-				':professionalType' => $_POST['professionaltype']
+				':department' => (isset($_POST['departmnet'])) ? $_POST['department'] : 
+'',
+				':title' => (isset($_POST['title'])) ? $_POST['title'] : '',
+				':professionalType' => 
+(isset($_POST['professionalType'])) ? $_POST['professionaltype'] : ''
 				
 			);
 			$staffTable = $database->InsertStaff($paramsStaffArray);
@@ -57,9 +60,9 @@ class Model {
 		if($_POST['role'] === 'student'){
 			$paramsStudentArray = array(
 				':UserNum' => $database->findUserNum($username),
-				':gpa' => $_POST['gpa'],
-				':gradeLevel' => $_POST['gradeLevel'],
-				':major' => $_POST['major']
+				':gpa' => (isset($_POST['firstname'])) ? $_POST['gpa'] : '',
+				':gradeLevel' => (isset($_POST['firstname'])) ? $_POST['gradeLevel'] : '',
+				':major' => (isset($_POST['firstname'])) ? $_POST['major'] : ''
 			);
 			$studentTable = $database->InsertStudent($paramsStudentArray);
 			//d($studentTable);
@@ -79,21 +82,25 @@ class Model {
 			d($_SESSION);
 			d($_SESSION);
 			d($link);
-			$msg = '<html><head>Sparklr account creation <title>
-</title></head><body>
-Your account has been created. <br> <a href="'.$link.'">Please click the link to verify your account.</a>
-</body></html>';			
+			//$msg = '<html><head>Sparklr account creation <title>
+			//</title></head><body>
+			//Your account has been created. <br> <a href="'.$link.'">Please click the 
+//link to 
+//verify 
+//your 
+//account.</a>
+//</body></html>';			
 			
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
+//$headers = "MIME-Version: 1.0" . "\r\n";
+//$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//$headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
 
 			mail(
 				$_POST['email'], 
 				'Sparklr account creation',
-				$msg,
-				'From: DoNotReply <donotreply@sparkopenresearch.com>',
-				$headers
+				'Your account has been created. '.$link.' Click the link to activate.',
+				'From: DoNotReply <donotreply@sparkopenresearch.com>'
+				//$headers
 				);
 			return '';
 		}
@@ -129,10 +136,10 @@ $headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
 		
 		//$fileName = $this->uploadPhoto('logo1');
 		
-		//d($_SESSION);
+		d($_SESSION);
 		$paramsArray = array(
 			':ListingNum'  => null, 
-			':StaffNum'  => 1,//$_SESSION['userInfo']['UserNum'],
+			':StaffNum'  => (int)$_SESSION['userInfo']['UserNum'],
 			':title'  => $_POST['title'], 
 			':positionAvailable'  => $_POST['positions'], 
 			':detailedDescription'  => $_POST['description'], 
@@ -147,17 +154,17 @@ $headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
 			':locationState'  => $_POST['locationState'], 
 			':gpaRequire'  => $_POST['gpareq'], 
 			':gradeRequire'  => $_POST['gradereq'], 
-			':paid'  => isset($_POST['paid']) ? true : false,
+			':paid'  => isset($_POST['paid']) ? 'Paid' : 'Unpaid',
 			':hoursPerWeek' => $_POST['hoursPerWeek'],
 			':howToApply' => $_POST['howToApply'],
-			':additionalDoc' => isset($_POST['additionalDoc']) ? $_POST['additionalDoc'] : NULL,
+			':additionalDoc' => isset($_POST['additionalDoc']) ? $_POST['additionalDoc'] : 'None',
 			':keywords' => $_POST['keywords'],
 			':specialReq' => $_POST['specialReq']
 		 );
 		
-		//d($paramsArray);
+		d($paramsArray);
 		$result = $database->InsertOpportunity($paramsArray);
-		//d($result);
+		d($result);
 	}
 	public function ShowListing($listNum){
 		global $database;
@@ -275,11 +282,12 @@ $headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
 			break;
 			
 			case 'createopportunity':
-				if( !isset($_SESSION['userInfo']) || 
-					!isset($_SESSION['userInfo']['role']) ||
-					$_SESSION['userInfo']['role'] !== 'profession'){
-					return false;
-				}
+				if( isset($_SESSION['userInfo']) &&
+				isset($_SESSION['userInfo']['role']) &&
+                                ($_SESSION['userInfo']['role'] !== 'admin' ||
+				$_SESSION['userInfo']['role'] !== 'profession')){
+					return true;
+				}else{return false;}
 			break;
 			
 			default:
@@ -552,6 +560,32 @@ $headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
 		$result = $database->DeleteOpportunity($paramsArray);
 		return $result;
 		
+	}
+	public function VerifiyUser(){
+		global $database;
+		$id = $_GET['id'];
+		$verification;
+	}
+	public function ShowUsers(){
+		
+	}
+	public function getEmail($staffNum) {
+		global $database;
+		$result = $database->getEmail($staffNum);
+		return $result;
+	}
+	public function sendEmail($email){
+		d($email['email']);
+		$mailSent = mail(
+			$email['email'],
+			'Application',
+			$_POST['name'] . "has applied for this opportunity.\r\nComments:" . $_POST['comments'] ."\r\nTheir contact information:".$_POST['email'],
+			'From: DoNotReply <donotreply@sparkopenresearch.com>'
+		);
+		d($mailSent);
+		d($_POST['name']);
+		d($_POST['email']);
+		d($_POST['comments']);
 	}
 }
 ?>

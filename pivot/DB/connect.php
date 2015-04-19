@@ -29,6 +29,7 @@ class DB{
 	private $queryPendingApproval = 'SELECT * FROM Listing WHERE approved = 0';
 	private $approveOpportunitySQL = 'UPDATE  Listing SET  approved =  1 WHERE  ListingNum = :ListingNum;';
 	private $deleteOppSQL = 'delete from Listing where ListingNum = :ListingNum; ';	
+	private $queryStaffEmail = 'Select email from User where UserNum = :staffNum;';
 	
 	//DB object constructor
 	public function __construct (){
@@ -115,7 +116,9 @@ class DB{
 	
 	public function InsertOpportunity($paramsArray){
 		$statement = $this->connection->prepare($this->insertListingSQL);
+		d($statement);
 		$passOrFail = $statement->execute($paramsArray);
+	    d($statement->errorInfo());
 		return $passOrFail;
 	}
 	
@@ -206,6 +209,16 @@ class DB{
 		$statement = $this->connection->prepare($this->insertVerifySQL);
                 $passOrFail = $statement->execute($params);
                 return $passOrFail;
+	}
+	public function getEmail($staffNum) {
+		$staffParams = array(
+			':staffNum' => $staffNum
+		);
+		$statement = $this->connection->prepare($this->queryStaffEmail);
+		$statement->execute($staffParams);
+		$tuple = $statement->fetch(PDO::FETCH_ASSOC);
+		d($tuple);
+		return $tuple;
 	}
 }
 ?>

@@ -17,7 +17,7 @@ require_once("template/navigationbar.php");
 	<p>End Date : <?php echo $listingRow['endDate']; ?></p>
 	</div>
 	<div class="col-md-4">
-	<p>Application Deadline: <?php echo $listingRow['deadline']; ?></p>
+	<p style="color: #f28b54;">Application Deadline: <?php echo $listingRow['deadline']; ?></p>
 	</div>
 	</div>
 	<p>Institution: <?php echo $listingRow['institution']; ?></p>

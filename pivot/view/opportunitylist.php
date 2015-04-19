@@ -91,20 +91,30 @@ require_once("template/navigationbar.php");
 	echo '<div>Opportunities Available: '.count($Listings).'<br /><br /></div>';
 	foreach($Listings as $key => $listing){
 		echo '<div class="row opplisting">
-		
-		<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-10" style="font-size:150%;">
 			<a href="'.$thisSite.'opportunities/'.$listing['ListingNum'].'">
 				Project Title: '.$listing['title'].'
 			</a>
+			</div>
+			<div class="col-md-2" style="color: #f28b54; text-align:center;">Application Deadline: '.$listing['deadline'].'</div>
 		</div>
-		<div class="col-md-2" style="color: #f28b54;">Deadline: '.$listing['deadline'].'</div>
-		<div class="col-md-4">Start Date: '.$listing['startDate'].' End Date: '.$listing['endDate'].'</div>
+		<div class="row">
+			<div class="col-md-12">Start Date: '.$listing['startDate'].'&nbsp;&nbsp;&nbsp;&nbsp; End Date: '.$listing['endDate'].'</div>
+		</div>
 		<!--<div class="col-md-2" style="margin-bottom: 10px; border: 2px solid #555555; text-align: center; border-radius: 10px;">STAR BUTTON
 		</div>-->
-		<div class="col-md-10 hidden-xs hidden-s">Description: '.$listing['detailedDescription'].'</div>
-		<a href="'.$listing['url'].'"><button class="col-md-2 btn btn-default">Apply</button></a>
+		<div class="col-md-10 hidden-xs hidden-s padding">Description: '.$listing['detailedDescription'].'</div>
+		';
+		if($listing['howToApply'] === '2') {
+			
+			echo'<button class="col-md-2 btn btn-default" onClick="applyEmail('.$listing["StaffNum"].')">Apply</button>';
+		}
+		else {
+			echo'<a href="'.$listing['url'].'"><button class="col-md-2 btn btn-default">Apply</button></a>';
+		}
 		
-		</div>';
+		echo '</div>';
 	}?>
 	
 	
@@ -124,6 +134,9 @@ require_once("template/navigationbar.php");
 			$('#addsearchbtn').text('(+) Advanced search');
 			$("#addsearch").addClass("hidden");
 		}
+	}
+	function applyEmail(StaffNum) {
+		window.location.href = "<?php echo $thisSite .'applyemailform/';?>"+StaffNum;
 	}
 </script>
 

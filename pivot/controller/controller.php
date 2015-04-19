@@ -30,7 +30,7 @@
 				if(count($_POST) > 0){
 					//d($_FILES);
 					$error = $this->model->validateOpportunity();
-					//d($error);
+					d($error);
 					if(empty($error)){
 						$pageTitle = 'Research Opportunity Created';
 						$this->model->CreateOpportunity();
@@ -133,7 +133,24 @@
 					
 					require 'view/adminimport.php';
 				
-				}elseif(isset($route[2]) && $route[2] === 'delete' &&
+				}elseif(isset($route[2]) && $route[2] === 'users' ){
+						//&& isset($route[3]) 
+						//&& $route[3]===''
+
+                                        $pageTitle = 'User accounts';// - '. $route[3];
+					$errorMessage = '';
+					if(count($_POST) > 0 ){
+
+                                        $errorMessage .= $this->model->CreateUser();
+					}else{
+					$errorMessage .= $this->model->ShowUsers();
+							//DeleteOpportunity($route[4]);
+
+                                        }
+					require 'view/adminusers.php';
+
+                                }
+                                elseif(isset($route[2]) && $route[2] === 'delete' &&
 						isset($route[3]) && $route[3] ==='opportunity'){
 
 					$pageTitle = 'Deletion - '. $route[3];
@@ -141,6 +158,13 @@
 					
 					require 'view/admindeletion.php';
 					
+				}
+				elseif(isset($route[2]) && $route[2] === 'editopportunity')				
+				{
+					$pageTitle = 'Edit Opportunity';
+                                        //$errorMessage = $this->model->DeleteOpportunity($route[4]);
+					$errorMessage = '';
+                                        require 'view/adminedit.php';
 				}
 				else{
 					$pageTitle = 'Administration Panel';
@@ -157,6 +181,30 @@
 				}else{
 					$pageTitle = 'Forgot Password';
 					require 'view/forgotpassword.php';
+				}
+			break;
+			
+
+			case 'verify':
+				$pageTitle = 'Account verification';
+				$isVerified = $this->model->VerifiyUser();
+				require 'view/verified.php';
+				
+			break;
+
+			case 'applyemailform':
+				if(isset($route[2])){
+					$staffNum = $route[2];
+					$pageTitle = 'Apply Through Email';
+					require 'view/applyemailform.php';
+					d($email);
+				}
+				if(count($_POST) > 0) {
+					$email = $this->model->getEmail($_POST['staffNum']);
+					d($email);
+					$sendEmail = $this->model->sendEmail($email);
+					$pageTitle = 'Email Sent';
+					require 'view/emailsent.php';
 				}
 			break;
 			

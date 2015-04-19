@@ -1,9 +1,6 @@
 <?php 
 require_once("template/header.php");
 require_once("template/navigationbar.php");
-/*if(isset($error) && $error !== ""){	
-echo "<script type='text/javascript'>alert('$error');</script>";
-}*/
 ?>
 <!-- Steps Progress and Details - START -->
 <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
@@ -235,14 +232,14 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 							<option value="1">Direct students to your own personal page</option>
 							<option value="2">Students apply through your email</option>
 						</select>
-					<div id="personalPageDiv">
+					<!--<div id="personalPageDiv">
 						<label>Please input your personal URL.</label>
 						<input class="form-control" id="personalPage" name="personalPage" />
 					</div>
 					<div id="emailPageDiv">
 						<label>Please input the E-mail students should contact.</label>
 						<input class="form-control" id="emailPageDiv" name="emailPageDiv" />
-					</div>
+					</div>-->
 					<div  class="checkbox">
 						<label><input class="" type="checkbox" id="paid" name="paid" value="1" />Check if this is a paid opportunity</label>
 					</div>
@@ -338,7 +335,7 @@ echo "<script type='text/javascript'>alert('$error');</script>";
 </style>
 
 <script type="text/javascript">
-function validate() {
+/*function validate() {
 var error = false;
 if(document.getElementById("title").value == "") {
 	error = true;
@@ -348,7 +345,7 @@ if(error){
 	return false;
 }
 return true;
-}
+}*/
 	$("#startdate").datepicker();
 	$("#enddate").datepicker();
 	$("#deadline").datepicker();

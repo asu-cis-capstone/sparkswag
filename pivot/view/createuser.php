@@ -56,7 +56,7 @@ require_once("template/navigationbar.php");
             <div class="col-md-12 well text-center">	<form class="form-horizontal" action="<?php echo $thisSite; ?>register" method="post" id="createaccount" accept-charset="UTF-8" role="form">
 	<div class="form-group">
 	<label>Role *</label>
-	<div class="radio form-control" style="padding-bottom:50px;">
+	<div class="radio form-control" style="padding-bottom:50px; text-align: left; width: 50%; margin-left:auto;margin-right:auto;">
 	
 	<label for="professional">
 	<input type="radio" id="professional" name="role" value="professional" onclick="showResearcherForm()" required>Professional</label><br>
@@ -205,7 +205,7 @@ require_once("template/navigationbar.php");
 		  placeholder="Title"><br >
 		
 		<label for="professionaltype">I am a *</label>
-		<select name="professionaltype" >
+		<select name="professionaltype" class="form-control">
 			<option value="universityresearcher">University Researcher</option>
 			<option value="industryprofessional">Industry Professional</option>
 		</select>
