@@ -30,7 +30,9 @@ class DB{
 	private $approveOpportunitySQL = 'UPDATE  Listing SET  approved =  1 WHERE  ListingNum = :ListingNum;';
 	private $deleteOppSQL = 'delete from Listing where ListingNum = :ListingNum; ';	
 	private $queryStaffEmail = 'Select email from User where UserNum = :staffNum;';
-	
+	private $verifyUserSQL = 'delete from Verify where UserNum = :UserNum and verification = :verification;';
+	private $updateVerified = 'UPDATE User SET  verified =  1 WHERE UserNum = :UserNum;';	
+
 	//DB object constructor
 	public function __construct (){
 		$DBconfig = new Config;
@@ -219,6 +221,18 @@ class DB{
 		$tuple = $statement->fetch(PDO::FETCH_ASSOC);
 		d($tuple);
 		return $tuple;
+	}
+	public function CheckVerification($params){
+		$statement = $this->connection->prepare($this->verifyUserSQL);
+                $result  = $statement->execute($params);
+		$rowcount = $statement->rowCount();
+		if($rowcount === 1 ){ 
+			$statement = $this->connection->prepare($this->updateVerified);
+	                $result  = $statement->execute([':UserNum' => $params[':UserNum']]);
+
+			return true; }
+		else{ return false;}
+		
 	}
 }
 ?>

@@ -221,7 +221,7 @@ require_once("template/navigationbar.php");
             <div class="col-md-12 well text-center">
 	<div class="form-group" id="" >
 		<label for="agree">I agree to the 
-			<a href="http://sparkopenresearch.com/terms.php">terms and conditions</a>
+			<a href="http://sparkopenresearch.com/terms.php" target="_blank">terms and conditions</a>
 		</label>
 		<input class="checkbox-inline" type="checkbox" id="agree" name="agree" value="1" required title="You must agree to the terms and conditions of the site. " >
 		

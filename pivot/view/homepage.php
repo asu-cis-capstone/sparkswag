@@ -49,9 +49,102 @@ require_once("template/navigationbar.php");
     <section id="download" class="content-section text-center">
         <div class="download-section">
         	<div class="container">
+              <div class="row db-padding-btm db-attached">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="db-wrapper">
+                    <div class="db-pricing-eleven db-bk-color-one">
+                        <div class="price">
+                            <i class="fa fa-mortar-board"></i>
+                        </div>
+                        <div class="type">
+                            Students
+                        </div>
+                        <ul>
+
+                            <li><i class="glyphicon glyphicon-ok"></i>Build your skills and resume </li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Discover your passions</li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Learn what kind of opportunities are available</li>
+                        </ul>
+                        <div class="pricing-footer">
+
+                            <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <div class="db-wrapper">
+                <div class="db-pricing-eleven db-bk-color-one">
+                    <div class="price">
+                     	<i class="fa fa-university"></i>
+                    </div>
+                    <div class="type">
+                        Universities
+                    </div>
+                    <ul>
+
+                           <li><i class="glyphicon glyphicon-ok"></i>Advertise & Promote out of classroom opportunities </li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Gain help to review student applications</li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Organize opportunities</li>
+                    </ul>
+                    <div class="pricing-footer">
+
+                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                    </div>
+                </div>
+                      </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <div class="db-wrapper">
+                <div class="db-pricing-eleven db-bk-color-three">
+                    <div class="price">
+						<i class="fa fa-user-md"></i>
+                    </div>
+                    <div class="type">
+                        Professionals
+                    </div>
+                    <ul>
+
+                           <li><i class="glyphicon glyphicon-ok"></i>Advertise & Promote out of classroom opportunities </li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Gain help to review student applications</li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Recruit from top talent</li>
+                    </ul>
+                    <div class="pricing-footer">
+
+                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                    </div>
+                </div>
+                      </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <div class="db-wrapper">
+                <div class="db-pricing-eleven db-bk-color-six">
+                    <div class="price">
+						<i class="fa fa-users"></i>
+                    </div>
+                    <div class="type">
+                        School Districts
+                    </div>
+                    <ul>
+
+                           <li><i class="glyphicon glyphicon-ok"></i>Empower your students with up-to-date knowledge</li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Help students gain an edge while in school</li>
+                            <li><i class="glyphicon glyphicon-ok"></i>Assist in discovering their interests</li>
+                    </ul>
+                    <div class="pricing-footer">
+
+                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                    </div>
+                </div>
+                      </div>
+            </div>
+        </div>
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Spark</h2>
-                <p>What students learn in the classroom does not always connect with the skills needed to succeed in higher education or as part of the workforce. Traditional internships, research opportunities, and practical experiences are important to prepare students for the future. However, existing opportunities only accommodate a small fraction of motivated students.</p>
+                <h2>About Sparklr</h2>
+                <p>Spark Open Research is creating digital pathways to help students discover their passion and build skills to help prepare them for future successes.  The Sparklr Opportunity Database catalogues, all in one place, active opportunities for in-person experiences including: internships, volunteerships, research programs, and more.</p>
+                
+                <p>Search by your interest, geographic location, skill you want to develop, paid or unpaid opportunities...etc.  Develop a profile to track new opportunities as they become available.  We are continuously adding new opportunities.  Don't see anything right for you? Tell us and we'll respond.  Get started now.
+                </p>
             </div>
             </div>
         </div>

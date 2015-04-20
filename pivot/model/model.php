@@ -78,22 +78,10 @@ class Model {
 			$database->InsertVerify($params);
 			global $thisSite;
 			$link = $thisSite . 'verify/?id=' . $foundUserNum . '&v=' .$number;
-			d($_SESSION);
-			d($_SESSION);
-			d($_SESSION);
-			d($link);
-			//$msg = '<html><head>Sparklr account creation <title>
-			//</title></head><body>
-			//Your account has been created. <br> <a href="'.$link.'">Please click the 
-//link to 
-//verify 
-//your 
-//account.</a>
-//</body></html>';			
-			
-//$headers = "MIME-Version: 1.0" . "\r\n";
-//$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-//$headers .= 'From: <donotreply@sparkopenresearch.com>' . "\r\n";
+			//d($_SESSION);
+			//d($_SESSION);
+			//d($_SESSION);
+			//d($link);
 
 			mail(
 				$_POST['email'], 
@@ -564,7 +552,13 @@ class Model {
 	public function VerifiyUser(){
 		global $database;
 		$id = $_GET['id'];
-		$verification;
+		$verification = $_GET['v'];
+		$params = [];
+		$params[':UserNum'] = $id;
+		$params['verification'] = $verification;
+		$result = $database->CheckVerification($params);
+		return $result;
+
 	}
 	public function ShowUsers(){
 		
