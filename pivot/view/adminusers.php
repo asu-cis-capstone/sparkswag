@@ -37,9 +37,9 @@ value="<?php if(isset($_POST['email'])){echo $_POST['email'];}?>">
 								</div>
 <div class="form-group" >
         <select class="form-control" name="role">
-        <option value="student">student</option>
-        <option value="profession">professional</option>
-        <option value="admin">admin</option>
+        <option value="student">Student</option>
+        <option value="profession">Professional</option>
+        <option value="admin">Administrator</option>
         </select>
 
  </div>								
