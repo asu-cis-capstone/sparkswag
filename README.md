@@ -66,7 +66,7 @@ https://youtu.be/IKJ9-__-5_o
 
 ** Release Version 0.4 **
 * Technology Pivot
-* Built a new webpage from scatch using MVC architecture to build the website (http://pivot.sparkopenresearch.com/)
+* Built a new webpage from scratch using MVC architecture to build the website (http://database.sparkopenresearch.com/)
 * Project Demo Video (https://youtu.be/IKJ9-__-5_o)
 
 ** Release Version 0.5 **
@@ -77,3 +77,4 @@ https://youtu.be/IKJ9-__-5_o
 
 ** Release Version 0.6 **
 * Added administration functionality
+* Test Cases
