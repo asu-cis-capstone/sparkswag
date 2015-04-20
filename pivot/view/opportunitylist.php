@@ -8,7 +8,7 @@ require_once("template/navigationbar.php");
 <div id="contents" class="container pull-down">
 	<form method="post" action="<?php echo $thisSite;?>opportunities" class="form-horizontal" id="searchform" accept-charset="UTF-8" role="form">
 		<div id="mainsearch" class="form-group">
-			<label for="text">Key Words</label>
+			<label for="text">Keywords</label>
 			<input type="text" id="text"  class="form-control" name="searchText">
 			<a id="addsearchbtn" href="javascript:addsearchjs();">(+) Advanced search</a>
 		</div>
