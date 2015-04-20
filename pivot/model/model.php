@@ -122,7 +122,7 @@ class Model {
 	public function CreateOpportunity(){
 		global $database;
 		
-		//$fileName = $this->uploadPhoto('logo1');
+		$fileName = $this->uploadDocument('additionalDoc');
 		
 		d($_SESSION);
 		$paramsArray = array(
@@ -145,7 +145,7 @@ class Model {
 			':paid'  => isset($_POST['paid']) ? 'Paid' : 'Unpaid',
 			':hoursPerWeek' => $_POST['hoursPerWeek'],
 			':howToApply' => $_POST['howToApply'],
-			':additionalDoc' => isset($_POST['additionalDoc']) ? $_POST['additionalDoc'] : 'None',
+			':additionalDoc' => $fileName,
 			':keywords' => $_POST['keywords'],
 			':specialReq' => $_POST['specialReq']
 		 );

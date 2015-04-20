@@ -8,6 +8,7 @@ require_once("template/navigationbar.php");
 	<h1><?php echo $pageTitle; ?></h1>
 	<?php if(isset($approved)){ ?>
 		<div class="container">
+
 		<div class="container">
 			<?php
 				echo '<div class="container">'. count($approved['succeeded']) . ' approvals succeeded.</div>';
@@ -35,9 +36,16 @@ require_once("template/navigationbar.php");
 		</div>
 	<?php } ?>
 	<div class="container">
-		<form action="" method="post">
-		<?php foreach($needsApproval as $key => $listing){
-			echo '<div class="row opplisting">
+		<form action="" method="post" role="form" id="approvalform">
+		
+                
+		<?php if(count($needsApproval) > 0){
+			foreach($needsApproval as $key => $listing){
+			echo '<label for="selectall">select all</label>
+				<input type="checkbox" id="selectall" name="selectall" onclick="$(\'input\').each(function(index, element){ element.checked = checked; 
+});  ">
+
+				<div class="row opplisting">
 					<div class="col-md-2">
 						<input type="checkbox" name="ListingNum[]" value="'.$listing['ListingNum'].'">
 					</div>
@@ -65,6 +73,13 @@ require_once("template/navigationbar.php");
 		}?>
 		<button class="btn btn-default">Approve</button>
 		</form>
+		<?php }else{ ?>
+		<div class="container">
+		<p>There are no pending approvals.</p>
+		</div>
+
+		<?php }?>
+		
 	</div>
 </div>
 

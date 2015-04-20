@@ -67,7 +67,7 @@ require_once("template/navigationbar.php");
                         </ul>
                         <div class="pricing-footer">
 
-                            <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                            <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ require_once("template/navigationbar.php");
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
                     </div>
                 </div>
                       </div>
@@ -111,7 +111,7 @@ require_once("template/navigationbar.php");
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
                     </div>
                 </div>
                       </div>
@@ -133,7 +133,7 @@ require_once("template/navigationbar.php");
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="#" class="btn db-button-color-square btn-lg">BOOK ORDER</a>
+                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
                     </div>
                 </div>
                       </div>
