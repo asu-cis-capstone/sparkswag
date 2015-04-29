@@ -19,8 +19,11 @@ require_once("template/navigationbar.php");
                 <a href="<?php echo $thisSite; ?>admin/users">User Accounts</a>
         </div>
 	<div  class="container ">
-                <a href="<?php echo $thisSite; ?>createopportunity">Create Opportunity</a>
-        </div>
+				<a href="<?php echo $thisSite; ?>createopportunity">Create Opportunity</a>
+    </div>
+	<div class="container">
+		<a href="<?php echo $thisSite; ?>admin/useraccounts">Show All Users</a>
+	</div>
 
 </div>
 

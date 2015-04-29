@@ -49,101 +49,82 @@ require_once("template/navigationbar.php");
     <section id="download" class="content-section text-center">
         <div class="download-section">
         	<div class="container">
-              <div class="row db-padding-btm db-attached">
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+             <div class="row db-padding-btm db-attached">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="db-wrapper">
                     <div class="db-pricing-eleven db-bk-color-one">
                         <div class="price">
-                            <i class="fa fa-mortar-board"></i>
+                           <li class="fa fa-university"></li>
                         </div>
                         <div class="type">
-                            Students
+                            Universities
                         </div>
                         <ul>
 
-                            <li><i class="glyphicon glyphicon-ok"></i>Build your skills and resume </li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Discover your passions</li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Learn what kind of opportunities are available</li>
+                            <li><i class="fa fa-check-square-o"></i>Catalogue in one place campus-based, out of the classroom opportunities.</li>
+                            <li><i class="fa fa-check-square-o"></i>Have the Sparklr team help review and manage student applications.</li>
+                            <li><i class="fa fa-check-square-o"></i>Organize opportunities in a single place for all students, across all academic units.</li>
                         </ul>
                         <div class="pricing-footer">
 
-                            <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
+                            <a href="<?php echo $thisSite; ?>register" class="btn db-button-color-square btn-lg">Register</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                  <div class="db-wrapper">
-                <div class="db-pricing-eleven db-bk-color-one">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                 <div class="db-wrapper">
+                <div class="db-pricing-eleven db-bk-color-two popular">
                     <div class="price">
-                     	<i class="fa fa-university"></i>
+                        <li class="fa fa-graduation-cap"></li>
                     </div>
                     <div class="type">
-                        Universities
+                        Students
                     </div>
                     <ul>
 
-                           <li><i class="glyphicon glyphicon-ok"></i>Advertise & Promote out of classroom opportunities </li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Gain help to review student applications</li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Organize opportunities</li>
+                        <li><i class="fa fa-check-square-o"></i>Explore opportunities. Discover your passions. Build your skills and resume.</li>
+                        <li><i class="fa fa-check-square-o"></i>Don’t see an opportunity yet in the database that fits your interests? Tell us more about yourself and we will let you know when a matching opportunity becomes available.</li>
+                        <li><i class="fa fa-check-square-o"></i>Gain in-field experience!</li>
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
+                        <a href="<?php echo $thisSite; ?>register" class="btn db-button-color-square btn-lg">Register</a>
                     </div>
                 </div>
-                      </div>
+                     </div>
             </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                  <div class="db-wrapper">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                 <div class="db-wrapper">
                 <div class="db-pricing-eleven db-bk-color-three">
                     <div class="price">
-						<i class="fa fa-user-md"></i>
+                        <li class="fa fa-user-md"></li>
                     </div>
                     <div class="type">
                         Professionals
                     </div>
                     <ul>
 
-                           <li><i class="glyphicon glyphicon-ok"></i>Advertise & Promote out of classroom opportunities </li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Gain help to review student applications</li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Recruit from top talent</li>
+                        <li><i class="fa fa-check-square-o"></i>Promote and advertise an internship, volunteer experience, or other research experiences for your business on Sparklr.</li>
+                        <li><i class="fa fa-check-square-o"></i>Have the Sparklr team help  to review and manage student applications.</li>
+                        <li><i class="fa fa-check-square-o"></i>Recruit from top talent across university students who are eager to engage in their field!</li>
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
+                        <a href="<?php echo $thisSite; ?>register" class="btn db-button-color-square btn-lg">Register</a>
                     </div>
                 </div>
-                      </div>
+                     </div>
             </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                  <div class="db-wrapper">
-                <div class="db-pricing-eleven db-bk-color-six">
-                    <div class="price">
-						<i class="fa fa-users"></i>
-                    </div>
-                    <div class="type">
-                        School Districts
-                    </div>
-                    <ul>
 
-                           <li><i class="glyphicon glyphicon-ok"></i>Empower your students with up-to-date knowledge</li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Help students gain an edge while in school</li>
-                            <li><i class="glyphicon glyphicon-ok"></i>Assist in discovering their interests</li>
-                    </ul>
-                    <div class="pricing-footer">
-
-                        <a href="http://pivot.sparkopenresearch.com/register" class="btn db-button-color-square btn-lg">Register</a>
-                    </div>
-                </div>
-                      </div>
-            </div>
+        </div>
+			</div>
         </div>
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About Sparklr</h2>
-                <p>Spark Open Research is creating digital pathways to help students discover their passion and build skills to help prepare them for future successes.  The Sparklr Opportunity Database catalogues, all in one place, active opportunities for in-person experiences including: internships, volunteerships, research programs, and more.</p>
+                <p>Spark is creating digital pathways to help students discover their passion and build skills to help prepare them for future successes.  The Sparklr Opportunity Database is a product of Spark and aims to provide a one-stop catalogue of active opportunities for in-person experiences, including: internships (paid and unpaid), volunteerships, research progrms, and more.</p>
                 
-                <p>Search by your interest, geographic location, skill you want to develop, paid or unpaid opportunities...etc.  Develop a profile to track new opportunities as they become available.  We are continuously adding new opportunities.  Don't see anything right for you? Tell us and we'll respond.  Get started now.
+                <p>Search by interest, geographic location, specific skill, age, eligibility, and other criteria.   Develop a profile and track new opportunities as they become available.  We are continuously adding new opportunities.  Don't see anything right for you? Tell us and we'll respond.  Get started now.
                 </p>
             </div>
             </div>
@@ -154,15 +135,12 @@ require_once("template/navigationbar.php");
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Spark</h2>
-                <p>Feel free to email us to provide some feedback on our site, or to just say hello!</p>
+                <p>Use the e-mail below to provide feedback on the database, or just to say hello!</p>
                 <p>The Spark Team<br /><a href="mailto:info@sparkopenresearch.com">info@sparkopenresearch.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                        <a href="https://www.facebook.com/sparkopenresearch?fref=ts" class="btn btn-default btn-lg"><i class="fa fa-facebook-square fa-fw"></i> <span class="network-name">facebook</span></a>
                     </li>
                 </ul>
             </div>

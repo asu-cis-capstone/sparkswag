@@ -3,7 +3,7 @@
 	//Will decide which model and view to call.
 	//$_SESSION['userInfo'] = "";
 	require_once("model/model.php");
-	$thisSite = $_SERVER["REQUEST_SCHEME"]. '://' . $_SERVER["SERVER_NAME"]. '/';
+	$thisSite = 'https://' . $_SERVER["SERVER_NAME"]. '/';
 	
 	class Controller {
 		private $model; //should be object
@@ -30,7 +30,7 @@
 				if(count($_POST) > 0){
 					//d($_FILES);
 					$error = $this->model->validateOpportunity();
-					d($error);
+					//d($error);
 					if(empty($error)){
 						$pageTitle = 'Research Opportunity Created';
 						$this->model->CreateOpportunity();
@@ -57,7 +57,7 @@
 					if($errorMessage == "" ){
 						require 'view/createusersuccess.php';
 					}else{
-						d($errorMessage);
+						//d($errorMessage);
 						require 'view/createuser.php';
 					}
 				}else{
@@ -78,7 +78,12 @@
 			
 			case 'opportunities':
 				if(isset($route[2])){
+					if(count($_POST) > 0){
+						$this->model->UpdateOpportunityField();
+					}
+
 					$pageTitle = 'Opportunities';
+					$canEdit = $this->model->CanEdit();
 					$listingRow = $this->model->ShowListing($route[2]);
 					//d($route[2]);
 					//d($listingRow);
@@ -166,6 +171,12 @@
 					$errorMessage = '';
                                         require 'view/adminedit.php';
 				}
+				elseif(isset($route[2]) && $route[2] === 'useraccounts')
+				{
+					$pageTitle = 'All Users';
+					$showAllUsers = $this->model->ShowAllUsers();
+					require 'view/adminuserview.php';
+				}
 				else{
 					$pageTitle = 'Administration Panel';
 					require 'view/admin.php';
@@ -197,11 +208,11 @@
 					$staffNum = $route[2];
 					$pageTitle = 'Apply Through Email';
 					require 'view/applyemailform.php';
-					d($email);
+					//d($email);
 				}
 				if(count($_POST) > 0) {
 					$email = $this->model->getEmail($_POST['staffNum']);
-					d($email);
+					//d($email);
 					$sendEmail = $this->model->sendEmail($email);
 					$pageTitle = 'Email Sent';
 					require 'view/emailsent.php';
@@ -210,7 +221,7 @@
 			
 			default:
 				//Nothing matched.  Defaulting to homepage.
-				$pageTitle = 'Sparklr Research Database Database';
+				$pageTitle = 'Sparklr Opportunity Database Database';
 				require 'view/homepage.php';
 			break;
 			

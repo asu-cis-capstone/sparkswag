@@ -124,7 +124,7 @@ class Model {
 		
 		$fileName = $this->uploadDocument('additionalDoc');
 		
-		d($_SESSION);
+		//d($_SESSION);
 		$paramsArray = array(
 			':ListingNum'  => null, 
 			':StaffNum'  => (int)$_SESSION['userInfo']['UserNum'],
@@ -150,9 +150,9 @@ class Model {
 			':specialReq' => $_POST['specialReq']
 		 );
 		
-		d($paramsArray);
+		//d($paramsArray);
 		$result = $database->InsertOpportunity($paramsArray);
-		d($result);
+		//d($result);
 	}
 	public function ShowListing($listNum){
 		global $database;
@@ -166,7 +166,12 @@ class Model {
 		return $result;
 		
 	}
-	
+	public function ShowAllUsers(){
+		global $database;
+		$result = $database->ShowAllUsers();
+		//d($result);
+		return $result;
+	}
 	public function ShowRecentListings(){
 		global $database;
 		$result = $database->ShowRecentListings();
@@ -439,6 +444,7 @@ class Model {
 			return false;
 		}
 	}*/
+	
 	public function UpdateUserField(){
 		global $database;
 		//d($_POST);
@@ -459,6 +465,30 @@ class Model {
 		return $result;
 		
 	}
+	
+
+	public function UpdateOpportunityField(){
+		global $database;
+		global $route;
+
+		//d($_POST);
+		
+		$keys = array_keys($_POST);
+		//d($keys[0]);
+		//d($_SESSION);	
+		$paramsArray = [];
+		$paramsArray[':value'] = $_POST[$keys[0]];
+		$paramsArray[':ListingNum'] = $route[2];//$_SESSION['userInfo']['UserNum'];
+		//d($paramsArray);
+		$result = $database->UpdateOpportunity($paramsArray, $keys[0]);
+		//d($result);
+		
+		
+		return $result;
+		
+	}
+	
+
 	public function ShowPendingApproval(){
 		global $database;
 		$result = $database->ShowUnapproved();
@@ -492,10 +522,10 @@ class Model {
 		//ini_set("auto_detect_line_endings", true);
 		$csv = $_FILES['importFile']['tmp_name'];
 		$fileHandle = fopen($csv, "r");
-		d($fileHandle);
-		d($fileHandle);
-		d($fileHandle);
-		d($fileHandle);
+		//d($fileHandle);
+		//d($fileHandle);
+		//d($fileHandle);
+		//d($fileHandle);
 		
 		$rows = [];// = fgetcsv($fileHandle, 0, ",");
 		while(!feof($fileHandle)) {
@@ -533,12 +563,12 @@ class Model {
 		
 			//d($paramsArray);
 			$result = $database->InsertOpportunity($paramsArray);
-			d($result);
+			//d($result);
 
 			if($result === false){
 				$failedInsert[] = $row;
 			}
-			d($failedInsert);
+			//d($failedInsert);
 		}
 	}
 	public function DeleteOpportunity($listID){
@@ -569,17 +599,35 @@ class Model {
 		return $result;
 	}
 	public function sendEmail($email){
-		d($email['email']);
+		//d($email['email']);
 		$mailSent = mail(
 			$email['email'],
 			'Application',
 			$_POST['name'] . "has applied for this opportunity.\r\nComments:" . $_POST['comments'] ."\r\nTheir contact information:".$_POST['email'],
 			'From: DoNotReply <donotreply@sparkopenresearch.com>'
 		);
-		d($mailSent);
-		d($_POST['name']);
-		d($_POST['email']);
-		d($_POST['comments']);
+		//d($mailSent);
+		//d($_POST['name']);
+		//d($_POST['email']);
+		//d($_POST['comments']);
+	}
+
+	public function CanEdit(){
+		if(!isset($_SESSION['userInfo'])){ return false; }
+		global $database;
+		global $route;
+		$listNum = $route[2];
+		$result = $database->ShowListing($listNum);
+		//d($result);
+
+		if($result['StaffNum'] === $_SESSION['userInfo']['UserNum']){
+			return true;
+		}
+
+		if($_SESSION['userInfo']['role'] === 'admin'){
+			return true;
+		}
+		return false;
 	}
 }
 ?>

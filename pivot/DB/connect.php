@@ -22,17 +22,18 @@ class DB{
 	private $queryOpportunitySQL = 'select * from Listing where ListingNum = :ListingNum;';
 	private $queryAllOpportunitySQL = 'select * from Listing;';
 	private $insertPhoto = 'Update User Set photo=:photo Where username = :userName';
-	private $showRecentOpportunity = 'SELECT * FROM Listing WHERE approved = 1 ORDER BY ListingNum DESC LIMIT 5';
+	private $showRecentOpportunity = 'SELECT * FROM Listing WHERE approved = 1 ORDER BY ListingNum DESC';
 	private $findEmail = 'select * from User where email = :email';
 	private $updatePasswordSQL = 'update User set hashedpass = :hashedpass where UserNum = :UserNum';
 	private $updateUserInfoSQL = 'update User set %%column%% = :value where UserNum = :UserNum';
+	private $updateOpportunitySQL = 'update Listing set %%column%% = :value where ListingNum = :ListingNum ;';
 	private $queryPendingApproval = 'SELECT * FROM Listing WHERE approved = 0';
 	private $approveOpportunitySQL = 'UPDATE  Listing SET  approved =  1 WHERE  ListingNum = :ListingNum;';
 	private $deleteOppSQL = 'delete from Listing where ListingNum = :ListingNum; ';	
 	private $queryStaffEmail = 'Select email from User where UserNum = :staffNum;';
 	private $verifyUserSQL = 'delete from Verify where UserNum = :UserNum and verification = :verification;';
 	private $updateVerified = 'UPDATE User SET  verified =  1 WHERE UserNum = :UserNum;';	
-
+	private $queryUserData = 'select username, fname, lname, email from User;';
 	//DB object constructor
 	public function __construct (){
 		$DBconfig = new Config;
@@ -108,6 +109,20 @@ class DB{
 		}
 	}
 	
+	public function ShowAllUsers(){
+		$statement = $this->connection->prepare($this->queryUserData);
+		$passOrFail = $statement->execute();
+		$tuple = $statement->fetchAll(PDO::FETCH_ASSOC);
+		//d($tuple);
+		if($tuple  !== false){
+			return $tuple;
+		}
+		else{
+			echo 'Failed showing users somehow!';
+			return false;
+		}
+	}
+	
 	public function CheckUserandPass($paramsArray){
 		$statement = $this->connection->prepare($this->checkUserPassSQL);
 		$passOrFail = $statement->execute( $paramsArray);
@@ -118,9 +133,9 @@ class DB{
 	
 	public function InsertOpportunity($paramsArray){
 		$statement = $this->connection->prepare($this->insertListingSQL);
-		d($statement);
+		//d($statement);
 		$passOrFail = $statement->execute($paramsArray);
-	    d($statement->errorInfo());
+	    //d($statement->errorInfo());
 		return $passOrFail;
 	}
 	
@@ -182,6 +197,17 @@ class DB{
 		$passOrFail = $statement->execute($paramsArray);
 		return $passOrFail;
 	}
+	
+	public function UpdateOpportunity($paramsArray, $column){
+		$temp = str_replace('%%column%%', $column, $this->updateOpportunitySQL);
+		d($temp);
+		$statement = $this->connection->prepare($temp);
+		$passOrFail = $statement->execute($paramsArray);
+		return $passOrFail;
+	}
+	
+
+
 	
 	public function ShowUnapproved(){
 		$statement = $this->connection->prepare($this->queryPendingApproval);

@@ -15,13 +15,15 @@ function ShowEditForm(name, elem, type){
 	var div = document.createElement("div");
 	var controldiv = document.createElement("div");
 	
+	
 	elem.parentNode.appendChild(form);
 	form.appendChild(div);
 	div.appendChild(input);
 	div.appendChild(button);
 	
 	form.method = 'post';
-	form.action = 'myaccount';
+	//form.action = 'myaccount';
+	form.action = '';
 	form.setAttribute('class', 'form-horizontal');
 	form.setAttribute('accept-charset', 'UTF-8');
 	form.setAttribute('role', 'form');
@@ -33,4 +35,11 @@ function ShowEditForm(name, elem, type){
 	input.setAttribute('name', name);
 	input.setAttribute('type', type);
 	input.focus();
+
+	var fudged =  elem.parentNode.innerText;
+	fudged = fudged.replace(/^.*:/,'');
+	fudged = fudged.replace('SAVE','');
+	fudged = fudged.trim();//replace('\t','');
+
+	input.value = fudged;
 }

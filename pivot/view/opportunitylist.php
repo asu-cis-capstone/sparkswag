@@ -94,17 +94,17 @@ require_once("template/navigationbar.php");
 		<div class="row">
 			<div class="col-md-10" style="font-size:150%;">
 			<a href="'.$thisSite.'opportunities/'.$listing['ListingNum'].'">
-				Project Title: '.$listing['title'].'
+				<b>Project Title</b>: '.$listing['title'].'
 			</a>
 			</div>
-			<div class="col-md-2" style="color: #f28b54; text-align:center;">Application Deadline: '.$listing['deadline'].'</div>
+			<div class="col-md-2" style="color: #f28b54; text-align:center;"><b>Application Deadline</b>: '.$listing['deadline'].'</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">Start Date: '.$listing['startDate'].'&nbsp;&nbsp;&nbsp;&nbsp; End Date: '.$listing['endDate'].'</div>
+			<div class="col-md-12"><b>Start Date</b>: '.$listing['startDate'].'&nbsp;&nbsp;&nbsp;&nbsp; <b>End Date</b>: '.$listing['endDate'].'</div>
 		</div>
 		<!--<div class="col-md-2" style="margin-bottom: 10px; border: 2px solid #555555; text-align: center; border-radius: 10px;">STAR BUTTON
 		</div>-->
-		<div class="col-md-10 hidden-xs hidden-s padding">Description: '.$listing['detailedDescription'].'</div>
+		<div class="col-md-10 hidden-xs hidden-s padding"><b>Description</b>: '.$listing['detailedDescription'].'</div>
 		';
 		if($listing['howToApply'] === '2') {
 			

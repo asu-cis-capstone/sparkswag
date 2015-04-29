@@ -11,13 +11,13 @@
 
     <title><?php echo $pageTitle; ?></title>
 	<!-- Javascript & Jquery -->
-	<script type="text/javascript" src="js/createuser.js"></script>
+	<script type="text/javascript" src="<?php echo $thisSite; ?>js/createuser.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="js/jquery.maskedinput.js"></script>
+	<script src="<?php echo $thisSite; ?>js/jquery.maskedinput.js"></script>
 	<!-- Google Font Roboto -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $thisSite; ?>css/bootstrap.css" rel="stylesheet">
@@ -27,8 +27,8 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo $thisSite; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../img/spark.ico" >
